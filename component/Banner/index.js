@@ -13,6 +13,7 @@ function Banner() {
             height={518}
             alt="slider 1"
             className={styles.slider}
+            priority
           />
           <div>
             <h1>jumpsuits</h1>
