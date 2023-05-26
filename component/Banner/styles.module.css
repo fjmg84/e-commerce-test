@@ -42,27 +42,6 @@
   font-family: Quicksand-VariableFont;
 }
 
-.slider div:nth-child(1) div button {
-  width: 150px;
-  height: 60px;
-  background: white;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.slider div:nth-child(1) div button span {
-  background: white;
-  border: none;
-  text-transform: uppercase;
-  font-family: "FrancoisOne-Regular";
-  color: rgb(7 89 133);
-  width: 80px;
-  border-color: rgb(7 89 133);
-  border-style: dashed;
-  padding: 10px 38px;
-}
-
 .slider div:nth-child(2) {
   display: flex;
   align-items: center;
@@ -101,4 +80,23 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.btn {
+  background: white;
+}
+
+.btn button {
+  width: 140px;
+  height: 52px;
+  background: white;
+  border: none;
+  text-transform: uppercase;
+  font-family: "FrancoisOne-Regular";
+  color: rgb(7 89 133);
+  border: none;
+  outline: none;
+  border-color: rgb(7 89 133);
+  border-style: dashed;
+  padding: 10px 38px;
 }

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Button from "../Common/Button";
 import styles from "./styles.module.css";
 
 function Banner() {
@@ -16,9 +17,7 @@ function Banner() {
           <div>
             <h1>jumpsuits</h1>
             <h4>Comfortable clothes for your babies</h4>
-            <button>
-              <span>discover</span>
-            </button>
+            <Button text="discover" myClassName={styles.btn} />
           </div>
         </div>
         <div>
