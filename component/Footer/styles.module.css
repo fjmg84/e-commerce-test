@@ -1,0 +1,31 @@
+.container {
+  background-color: #fbb660;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logo {
+  width: 250px;
+  height: 80px;
+}
+
+.navbar,
+.network {
+  color: white;
+  list-style: none;
+  display: flex;
+  gap: 2%;
+  width: 100%;
+  align-items: baseline;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.navbar li,
+.network li {
+  cursor: pointer;
+}

@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logo {
+  width: 300px;
+  height: 100px;
+  margin: 5%;
+}
+
+.cardAlert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 30px;
+  color: white;
+  font-family: "Quicksand-VariableFont";
+  background-color: #f1755c;
+}
+
+.navbar {
+  color: rgb(7 89 133);
+  list-style: none;
+  display: flex;
+  gap: 2%;
+  width: 100%;
+  align-items: baseline;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.navbar li {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s;
+}
+
+.navbar li:hover {
+  color: #f1755c;
+}
+
+.active {
+  color: #f1755c;
+}
+.active span {
+  background: url("/recursos/main/home-8.png") no-repeat;
+  width: 100%;
+  height: 20px;
+}

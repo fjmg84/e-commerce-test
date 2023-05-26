@@ -1,9 +1,21 @@
+@font-face {
+  font-family: "FrancoisOne-Regular";
+  src: url("/recursos/common/Francois_One/FrancoisOne-Regular.ttf");
+}
+@font-face {
+  font-family: "GildaDisplay-Regular";
+  src: url("/recursos/common/Gilda_Display/GildaDisplay-Regular.ttf");
+}
+@font-face {
+  font-family: "Quicksand-VariableFont";
+  src: url("/recursos/common/Quicksand/Quicksand-VariableFont_wght.ttf");
+}
+
 html,
 body {
+  font-family: FrancoisOne-Regular;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 * {
