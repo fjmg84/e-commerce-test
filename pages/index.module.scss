@@ -11,3 +11,17 @@
 .box {
   width: 1200px;
 }
+
+.mainBox {
+  display: flex;
+  flex-direction: column;
+  main {
+    height: 100vw;
+    width: 80%;
+  }
+  aside {
+    display: grid;
+    gap: 30px;
+    width: 20%;
+  }
+}
