@@ -1,0 +1,39 @@
+@import "../../styles/colors";
+
+.container {
+    width: 100%;
+    form {
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+
+        input {
+            border-top: 1px dotted;
+            border-left: none;
+            border-bottom: 1px dotted;
+            border-right: none;
+            outline: none;
+            font-family: "Quicksand-VariableFont";
+        }
+    }
+}
+
+.btn {
+    background: $red;
+}
+
+.btn button {
+    width: 40px;
+    height: 40px;
+    background: $red;
+    border: none;
+    color: white;
+    border: none;
+    outline: none;
+    border-color: white;
+    border-style: dashed;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

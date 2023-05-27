@@ -5,6 +5,7 @@ import CategoriesList from "../component/Categories/List";
 import mockData from "../mock/data.json";
 import { orderArray } from "../utils/functions/orderArray";
 import styles from "../pages/index.module.scss";
+import Search from "../component/Search";
 
 export default function Home({ categories, products }) {
   return (
@@ -17,10 +18,10 @@ export default function Home({ categories, products }) {
           <Banner />
           <CategoriesCircle />
           <div className={styles.mainBox}>
-            <main>
-              <h1>New Arrivals</h1>
-            </main>
+            <h1>New Arrivals</h1>
+            <main></main>
             <aside>
+              <Search />
               <CategoriesList categories={categories} />
             </aside>
           </div>

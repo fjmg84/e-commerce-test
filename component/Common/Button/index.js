@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 function Button({ image = null, text, myClassName }) {
   return (
     <span className={`${styles.btn} ${myClassName}`}>
-      <button>{image !== null ? image : text}</button>
+      <button>{image !== null ? <i className={image}></i> : text}</button>
     </span>
   );
 }
