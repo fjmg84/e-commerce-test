@@ -1,0 +1,31 @@
+@import "../../../styles/colors.scss";
+.container {
+  color: $blue;
+
+  ul {
+    display: inline;
+    list-style: none;
+    li {
+      border-bottom: 1px solid;
+      margin: 1%;
+      padding: 1%;
+      &:nth-last-child(1) {
+        border: none;
+      }
+      a {
+        color: $blue;
+        text-decoration: none;
+      }
+      div {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.container_list {
+  padding: 2%;
+  border: 1px solid white;
+  box-shadow: 2px 2px 5px rgb(218, 215, 215);
+}

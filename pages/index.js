@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Banner from "../component/Banner";
 import CategoriesCircle from "../component/Categories/Circle";
+import CategoriesList from "../component/Categories/List";
 import mockData from "../mock/data.json";
-import styles from "../pages/index.module.css";
+import { orderArray } from "../utils/functions/orderArray";
+import styles from "../pages/index.module.scss";
 
 export default function Home({ categories, products }) {
   return (
@@ -11,9 +13,17 @@ export default function Home({ categories, products }) {
         <title>E-Commerce Baby</title>
       </Head>
       <div className={styles.container}>
-        <div className={styles.container_banner}>
+        <div className={styles.box}>
           <Banner />
           <CategoriesCircle />
+          <div className={styles.mainBox}>
+            <main>
+              <h1>New Arrivals</h1>
+            </main>
+            <aside>
+              <CategoriesList categories={categories} />
+            </aside>
+          </div>
         </div>
       </div>
     </>
@@ -38,7 +48,7 @@ export async function getStaticProps() {
   });
   return {
     props: {
-      categories,
+      categories: orderArray(categories, "name"),
       products: mockData,
     },
   };

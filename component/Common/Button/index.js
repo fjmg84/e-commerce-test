@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 function Button({ image = null, text, myClassName }) {
   return (

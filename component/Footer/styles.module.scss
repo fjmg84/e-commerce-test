@@ -1,5 +1,7 @@
+@import "../../styles/colors.scss";
+
 .container {
-  background-color: #fbb660;
+  background-color: $yellow;
   width: 100%;
   height: 300px;
   display: flex;
