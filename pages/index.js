@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Banner from "../component/Banner";
+import CategoriesCircle from "../component/Categories/Circle";
 import mockData from "../mock/data.json";
 import styles from "../pages/index.module.css";
 
@@ -12,6 +13,7 @@ export default function Home({ categories, products }) {
       <div className={styles.container}>
         <div className={styles.container_banner}>
           <Banner />
+          <CategoriesCircle />
         </div>
       </div>
     </>

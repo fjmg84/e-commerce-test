@@ -2,8 +2,10 @@
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 100%;
 }
 
 .container_banner {
