@@ -6,6 +6,7 @@ import mockData from "../mock/data.json";
 import { orderArray } from "../utils/functions/orderArray";
 import styles from "../pages/index.module.scss";
 import Search from "../component/Search";
+import NewsLetter from "../component/NewsLetter";
 
 export default function Home({ categories, products }) {
   return (
@@ -23,6 +24,7 @@ export default function Home({ categories, products }) {
             <aside>
               <Search />
               <CategoriesList categories={categories} />
+              <NewsLetter />
             </aside>
           </div>
         </div>

@@ -1,0 +1,63 @@
+@import "../../styles/colors";
+
+.container {
+    width: 100%;
+    display: flex;
+    background: $red;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+
+    div {
+        width: 200px;
+        display: flex;
+        align-items: center;
+    }
+
+    h1 {
+        font-family: "GildaDisplay-Regular";
+        color: white;
+        letter-spacing: 0.03em;
+        text-align: center;
+        font-weight: 200;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        gap: 10px;
+
+        input {
+            font-family: "Quicksand-VariableFont";
+            height: 45px;
+            outline: none;
+            border: 2px dashed white;
+            background-color: $red;
+            color: white;
+            padding: 5px 10px;
+            &::placeholder {
+                color: white;
+            }
+        }
+    }
+}
+
+.btn {
+    background: white;
+}
+
+.btn button {
+    width: 190px;
+    height: 40px;
+    background: $red;
+    color: $red;
+    background-color: white;
+    outline: none;
+    border-color: $red;
+    border-style: dashed;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
