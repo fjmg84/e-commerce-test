@@ -7,7 +7,7 @@ function Navbar() {
       <div className={styles.container}>
         <div className={styles.cardAlert}>
           <h6>
-            20% 0ff all kidswear + free shopping when you spend $60 or more{" "}
+            20% 0ff all kidswear + free shopping when you spend $60 or more
           </h6>
         </div>
 
@@ -20,41 +20,45 @@ function Navbar() {
           priority
         />
 
-        <ul className={styles.navbar}>
-          <li className={styles.active}>
-            home
-            <span />
-          </li>
-          <li>
-            shop features
-            <span />
-          </li>
-          <li>
-            clothes
-            <span />
-          </li>
-          <li>
-            pages
-            <span />
-          </li>
-          <li>
-            shortcodes
-            <span />
-          </li>
-          <li>
-            post types
-            <span />
-          </li>
-          <li>
-            <i className="fa fa-heart-o"></i>
-          </li>
-          <li>
-            <i className="fa fa-shopping-cart"></i>
-          </li>
-          <li>
-            <i className="fa fa-search"></i>
-          </li>
-        </ul>
+        <div className={styles.navbar}>
+          <ul className={styles.links}>
+            <li className={styles.active}>
+              home
+              <span />
+            </li>
+            <li>
+              shop features
+              <span />
+            </li>
+            <li>
+              clothes
+              <span />
+            </li>
+            <li>
+              pages
+              <span />
+            </li>
+            <li>
+              shortcodes
+              <span />
+            </li>
+            <li>
+              post types
+              <span />
+            </li>
+          </ul>
+          <ul className={styles.menu}>
+            <li>
+              <i className="fa fa-heart-o"></i>
+            </li>
+            <li>
+              <i className="fa fa-shopping-cart"></i>
+            </li>
+            <li>
+              <i className="fa fa-search"></i>
+            </li>
+          </ul>
+        </div>
       </div>
     </>
   );
