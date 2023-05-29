@@ -10,6 +10,8 @@ import NewsLetter from "../component/NewsLetter";
 import BestSellers from "../component/BestSellers";
 
 export default function Home({ categories, products }) {
+  let betsSellers = Object.values(products);
+
   return (
     <>
       <Head>
@@ -28,7 +30,7 @@ export default function Home({ categories, products }) {
             <aside>
               <Search />
               <CategoriesList categories={categories} />
-              <BestSellers />
+              <BestSellers products={betsSellers.slice(0, 4)} />
               <NewsLetter />
             </aside>
             <main></main>
