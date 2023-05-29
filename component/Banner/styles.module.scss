@@ -15,62 +15,37 @@
   width: 100%;
 }
 
-.slider div:nth-child(1) {
+.banner_1 {
   position: relative;
   color: white;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
+  h1 {
+    text-transform: uppercase;
+  }
 }
 
-.slider div:nth-child(1) div {
+.banner_1_desc {
+  background: transparent;
   position: absolute;
   height: 100%;
   width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
-  padding: 0% 0% 5% 5%;
+  flex-direction: column;
   gap: 15px;
+  padding: 0% 0% 5% 5%;
 }
 
-.slider div:nth-child(1) div h1 {
-  text-transform: uppercase;
-  font-size: 3em;
-}
-
-.slider div:nth-child(1) div h4 {
-  font-family: Quicksand-VariableFont;
-}
-
-.slider div:nth-child(2) {
+.banner_1_btn {
+  background-color: white;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  height: 580px;
-}
-
-.slider div:nth-child(2) div {
-  margin-top: 5%;
-}
-
-.slider div:nth-child(2) div h1 {
-  color: $blue;
-  text-transform: uppercase;
-}
-
-.slider div:nth-child(2) div h4 {
-  font-family: Quicksand-VariableFont;
-  color: gray;
+  justify-content: center;
+  padding: 1%;
 }
 
 .btn {
-  background: white;
-}
-
-.btn button {
   width: 140px;
   height: 52px;
   background: white;
@@ -82,5 +57,19 @@
   outline: none;
   border-color: $blue;
   border-style: dashed;
-  padding: 10px 38px;
+}
+
+.banner_2_desc {
+  color: $blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  h1 {
+    text-transform: uppercase;
+  }
+  h4 {
+    color: gray;
+    font-family: "Quicksand-VariableFont";
+  }
 }

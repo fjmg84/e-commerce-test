@@ -26,24 +26,27 @@
 }
 
 .navbar {
-  color: $blue;
-  list-style: none;
   display: flex;
-  gap: 2%;
-  width: 100%;
+  flex-direction: row;
   align-items: baseline;
   justify-content: center;
-  text-transform: uppercase;
-}
+  width: 100%;
+  color: $blue;
 
-.navbar li {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.2s;
+  ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    text-transform: uppercase;
 
-  &:hover {
-    color: $orange;
+    li {
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        color: $orange;
+      }
+    }
   }
 }
 
@@ -51,6 +54,7 @@
   color: $orange;
   span {
     background: url("/recursos/main/home-8.png") no-repeat;
+    display: flex;
     width: 100%;
     height: 20px;
   }

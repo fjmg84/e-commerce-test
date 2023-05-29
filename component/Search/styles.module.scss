@@ -19,11 +19,15 @@
     }
 }
 
-.btn {
+.btn_container {
     background: $red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
 }
 
-.btn button {
+.btn {
     width: 40px;
     height: 40px;
     background: $red;
@@ -32,8 +36,4 @@
     outline: none;
     border-color: white;
     border-style: dashed;
-    padding: 10px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }

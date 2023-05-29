@@ -9,7 +9,9 @@ function NewsLetter() {
       </div>
       <form>
         <input type="text" name="email" placeholder="Your Email Address" />
-        <Button text="subscribe" myClassName={styles.btn} />
+        <div className={styles.btn_container}>
+          <Button text="subscribe" myClassName={styles.btn} />
+        </div>
       </form>
     </div>
   );

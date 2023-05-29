@@ -1,10 +1,18 @@
 import styles from "./styles.module.scss";
 
-function Button({ image = null, text, myClassName }) {
+function Button({
+  image = undefined,
+  text = undefined,
+  myClassName = undefined,
+  handler = undefined,
+}) {
   return (
-    <span className={`${styles.btn} ${myClassName}`}>
-      <button>{image !== null ? <i className={image}></i> : text}</button>
-    </span>
+    <button onClick={handler} className={`${styles.btn} ${myClassName}`}>
+      <span>
+        {image && <i className={image}></i>}
+        {text && text}
+      </span>
+    </button>
   );
 }
 

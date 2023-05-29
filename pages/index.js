@@ -19,15 +19,19 @@ export default function Home({ categories, products }) {
         <div className={styles.box}>
           <Banner />
           <CategoriesCircle />
-          <div className={styles.mainBox}>
+          <div className={styles.title_arrivals}>
             <h1>New Arrivals</h1>
-            <main></main>
+            <span />
+          </div>
+
+          <div className={styles.mainBox}>
             <aside>
               <Search />
               <CategoriesList categories={categories} />
               <BestSellers />
               <NewsLetter />
             </aside>
+            <main></main>
           </div>
         </div>
       </div>
