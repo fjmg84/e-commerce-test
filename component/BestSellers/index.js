@@ -18,7 +18,7 @@ function BestSellers({ products }) {
       <div className={styles.container_list}>
         {products.map((product) => {
           return (
-            <div className={styles.box}>
+            <div key={product.sku} className={styles.box}>
               <div className={styles.box_image}>
                 <Image
                   src={product.images[0]}
@@ -30,7 +30,7 @@ function BestSellers({ products }) {
 
               <div className={styles.box_desc}>
                 <h4>{product.title}</h4>
-                <p>{generateRated(product.rate).map((value) => value)}</p>
+                <h4>{generateRated(product.rate).map((value) => value)}</h4>
                 <h4>{`$${product.price}.00`}</h4>
               </div>
             </div>
