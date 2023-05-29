@@ -1,7 +1,10 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
+import { usePathname } from "next/navigation";
 
 function Navbar() {
+  const pathname = usePathname();
+
   return (
     <>
       <div className={styles.container}>
@@ -22,27 +25,41 @@ function Navbar() {
 
         <div className={styles.navbar}>
           <ul className={styles.links}>
-            <li className={styles.active}>
+            <li className={pathname.startsWith("/") ? styles.active : ""}>
               home
               <span />
             </li>
-            <li>
+            <li
+              className={
+                pathname.startsWith("/shop_features") ? styles.active : ""
+              }
+            >
               shop features
               <span />
             </li>
-            <li>
+            <li
+              className={pathname.startsWith("/clothes") ? styles.active : ""}
+            >
               clothes
               <span />
             </li>
-            <li>
+            <li className={pathname.startsWith("/pages") ? styles.active : ""}>
               pages
               <span />
             </li>
-            <li>
+            <li
+              className={
+                pathname.startsWith("/shortcodes") ? styles.active : ""
+              }
+            >
               shortcodes
               <span />
             </li>
-            <li>
+            <li
+              className={
+                pathname.startsWith("/post_types") ? styles.active : ""
+              }
+            >
               post types
               <span />
             </li>
