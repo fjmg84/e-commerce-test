@@ -7,6 +7,7 @@ import { orderArray } from "../utils/functions/orderArray";
 import styles from "../pages/index.module.scss";
 import Search from "../component/Search";
 import NewsLetter from "../component/NewsLetter";
+import BestSellers from "../component/BestSellers";
 
 export default function Home({ categories, products }) {
   return (
@@ -24,6 +25,7 @@ export default function Home({ categories, products }) {
             <aside>
               <Search />
               <CategoriesList categories={categories} />
+              <BestSellers />
               <NewsLetter />
             </aside>
           </div>
