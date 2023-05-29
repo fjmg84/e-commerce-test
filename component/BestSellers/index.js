@@ -6,8 +6,11 @@ function BestSellers({ products }) {
     let rating = [];
     for (let i = 1; i <= 5; i++) {
       if (i <= value)
-        rating.push(<i className={`fa fa-star ${styles.fill}`}></i>);
-      else rating.push(<i className={`fa fa-star ${styles.out_fill}`}></i>);
+        rating.push(<i key={i} className={`fa fa-star ${styles.fill}`}></i>);
+      else
+        rating.push(
+          <i key={i} className={`fa fa-star ${styles.out_fill}`}></i>
+        );
     }
 
     return rating;
