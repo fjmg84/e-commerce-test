@@ -62,3 +62,11 @@
 .network li {
   cursor: pointer;
 }
+
+.footerImage {
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
