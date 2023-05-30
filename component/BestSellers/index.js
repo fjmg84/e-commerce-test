@@ -1,20 +1,8 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
+import { generateRated } from "../../utils/functions/rate";
 
 function BestSellers({ products }) {
-  const generateRated = (value) => {
-    let rating = [];
-    for (let i = 1; i <= 5; i++) {
-      if (i <= value)
-        rating.push(<i key={i} className={`fa fa-star ${styles.fill}`}></i>);
-      else
-        rating.push(
-          <i key={i} className={`fa fa-star ${styles.out_fill}`}></i>
-        );
-    }
-
-    return rating;
-  };
   return (
     <div className={styles.container}>
       <h1>Best Sellers</h1>
@@ -33,7 +21,13 @@ function BestSellers({ products }) {
 
               <div className={styles.box_desc}>
                 <h4>{product.title}</h4>
-                <h4>{generateRated(product.rate).map((value) => value)}</h4>
+                <h4>
+                  {generateRated({
+                    value: product.rate,
+                    colorFill: styles.fill,
+                    colorOutFill: styles.out_fill,
+                  }).map((value) => value)}
+                </h4>
                 <h4>{`$${product.price}.00`}</h4>
               </div>
             </div>
