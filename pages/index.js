@@ -21,13 +21,15 @@ export default function Home({ categories, products }) {
       <div className={styles.container}>
         <div className={styles.box}>
           <Banner />
+
           <CategoriesCircle />
-          <div className={styles.title_arrivals}>
-            <h1>New Arrivals</h1>
-            <span />
-          </div>
 
           <div className={styles.mainBox}>
+            <div className={styles.title}>
+              <h1>New Arrivals</h1>
+              <span />
+            </div>
+
             <aside>
               <Search />
               <CategoriesList categories={categories} />

@@ -14,13 +14,13 @@
   width: 1200px;
 }
 
-.title_arrivals {
+.title {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: $blue;
-  margin: 8% 0%;
+  margin: 5% 0%;
   width: 100%;
   span {
     background: url("/recursos/main/home-8.png") no-repeat 50% 100%;
@@ -32,6 +32,7 @@
 .mainBox {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   main {
     height: 100%;
     width: 75%;
