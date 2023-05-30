@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 function Navbar() {
   const pathname = usePathname();
@@ -25,41 +26,28 @@ function Navbar() {
 
         <div className={styles.navbar}>
           <ul className={styles.links}>
-            <li className={pathname.startsWith("/") ? styles.active : ""}>
-              home
+            <li className={pathname === "/" ? styles.active : ""}>
+              <Link href={"/"}>home</Link>
+
               <span />
             </li>
-            <li
-              className={
-                pathname.startsWith("/shop_features") ? styles.active : ""
-              }
-            >
+            <li className={pathname === "/shop_features" ? styles.active : ""}>
               shop features
               <span />
             </li>
-            <li
-              className={pathname.startsWith("/clothes") ? styles.active : ""}
-            >
+            <li className={pathname === "/clothes" ? styles.active : ""}>
               clothes
               <span />
             </li>
-            <li className={pathname.startsWith("/pages") ? styles.active : ""}>
+            <li className={pathname === "/pages" ? styles.active : ""}>
               pages
               <span />
             </li>
-            <li
-              className={
-                pathname.startsWith("/shortcodes") ? styles.active : ""
-              }
-            >
+            <li className={pathname === "/shortcodes" ? styles.active : ""}>
               shortcodes
               <span />
             </li>
-            <li
-              className={
-                pathname.startsWith("/post_types") ? styles.active : ""
-              }
-            >
+            <li className={pathname === "/post_types" ? styles.active : ""}>
               post types
               <span />
             </li>

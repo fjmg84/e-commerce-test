@@ -11,6 +11,8 @@
   src: url("/recursos/common/Quicksand/Quicksand-VariableFont_wght.ttf");
 }
 
+@import "./colors.scss";
+
 html,
 body {
   font-family: "FrancoisOne-Regular";
@@ -46,4 +48,13 @@ h4,
 h5,
 h6 {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $blue;
+  transition: all 0.5s;
+  &:hover {
+    color: $orange;
+  }
 }
