@@ -3,11 +3,12 @@ import Banner from "../component/Banner";
 import CategoriesCircle from "../component/Categories/Circle";
 import CategoriesList from "../component/Categories/List";
 import mockData from "../mock/data.json";
-import { orderArray } from "../utils/functions/orderArray";
+import { orderArray, unorderedArray } from "../utils/functions/orderArray";
 import styles from "../pages/index.module.scss";
 import Search from "../component/Search";
 import NewsLetter from "../component/NewsLetter";
 import BestSellers from "../component/BestSellers";
+import CardProduct from "../component/CardProduct";
 
 export default function Home({ categories, products }) {
   let betsSellers = Object.values(products);
@@ -33,7 +34,15 @@ export default function Home({ categories, products }) {
               <BestSellers products={betsSellers.slice(0, 4)} />
               <NewsLetter />
             </aside>
-            <main></main>
+            <main>
+              {products.map((product) => {
+                return (
+                  <div key={product.sku} className={styles.product}>
+                    <CardProduct product={product} />
+                  </div>
+                );
+              })}
+            </main>
           </div>
         </div>
       </div>
@@ -60,7 +69,7 @@ export async function getStaticProps() {
   return {
     props: {
       categories: orderArray(categories, "name"),
-      products: mockData,
+      products: unorderedArray(mockData),
     },
   };
 }
