@@ -1,22 +1,19 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import { usePathname, useSearchParams } from "next/navigation";
-import {
-  GlassMagnifier,
-  SideBySideMagnifier,
-  MOUSE_ACTIVATION,
-  TOUCH_ACTIVATION,
-} from "react-image-magnifiers";
+import { SideBySideMagnifier } from "react-image-magnifiers";
+import useRate from "../../../hooks/useRate";
 
 import ImageCard from "../../../component/Common/Image";
 
-import { generateRated } from "../../../utils/functions/rate";
 import mockData from "../../../mock/data.json";
 import styles from "./styles.module.scss";
 
 export default function ProductShow() {
   const [path, setPath] = useState({ category: null, title: null });
   const [product, setProduct] = useState({ product: null, image: null });
+  const { generated, rates } = useRate();
+
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -32,6 +29,11 @@ export default function ProductShow() {
       let productFilter = mockData.filter(
         (data) => data.category === path.category && data.title === path.title
       );
+      generated({
+        value: productFilter[0].rate,
+        colorFill: styles.fill,
+        colorOutFill: styles.out_fill,
+      });
       setProduct({
         product: productFilter[0],
         image: productFilter[0].images[0],
@@ -85,11 +87,9 @@ export default function ProductShow() {
         <div className={styles.product__data}>
           <p>{`$${product?.product?.price}.00`}</p>
           <p>
-            {generateRated({
-              value: product?.product?.rate,
-              colorFill: styles.fill,
-              colorOutFill: styles.out_fill,
-            }).map((value) => value)}
+            {rates.map((rate, index) => (
+              <i key={index} className={`${rate}`}></i>
+            ))}
           </p>
           <p>{product?.product?.description}</p>
 
@@ -115,15 +115,4 @@ export default function ProductShow() {
       </div>
     </>
   );
-}
-
-{
-  /* <div>
-              <ImageCard
-                path={product?.image}
-                alt={product?.image}
-                width={300}
-                height={400}
-              />
-            </div> */
 }
