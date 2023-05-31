@@ -1,7 +1,7 @@
 import Image from "next/image";
-import styles from "./styles.module.scss";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import styles from "./styles.module.scss";
 
 function Navbar() {
   const pathname = usePathname();
