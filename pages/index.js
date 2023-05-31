@@ -64,7 +64,7 @@ export default function Home({ categories, products }) {
           return (
             <ImageCard
               key={index}
-              myClassName={styles.footerImage}
+              myClassName={styles.footer__image}
               path={image}
               alt={image}
               width={230}

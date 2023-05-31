@@ -6,6 +6,7 @@ import mockData from "../../../mock/data.json";
 
 import ShowProduct from "../../../component/Product/Show";
 import CardProduct from "../../../component/Product/Card";
+import BannerFooter from "../../../component/Banners/Footer";
 
 import styles from "./styles.module.scss";
 
@@ -45,18 +46,18 @@ export default function ProductShow() {
         <title>E-Commerce Product</title>
       </Head>
       {product.product ? <ShowProduct data={product} /> : <h1>Loading...</h1>}
+
       {product.relative && (
-        <div className={styles.relative__container}>
-          <h1>
-            Relative Product
-            <span />
-          </h1>
+        <BannerFooter
+          title="Relative Product"
+          myClassName={styles.relative__title}
+        >
           <div className={styles.relative__products}>
             {product.relative.map((product, index) => (
               <CardProduct key={index} product={product} showRate={true} />
             ))}
           </div>
-        </div>
+        </BannerFooter>
       )}
     </>
   );

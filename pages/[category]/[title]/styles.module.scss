@@ -6,26 +6,20 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    h1 {
-        color: $blue;
-        text-transform: uppercase;
-        font-family: "FrancoisOne-Regular";
-        font-size: 24px;
-        font-weight: 100;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        span {
-            background: url("/recursos/main/home-8.png") no-repeat;
-            display: flex;
-            width: 72px;
-            height: 20px;
-        }
-    }
 }
 .relative__products {
     display: flex;
     gap: 50px;
     margin: 50px 0;
+}
+
+.relative__title {
+    color: $blue;
+    text-transform: uppercase;
+    font-family: "FrancoisOne-Regular";
+    font-size: 24px;
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
