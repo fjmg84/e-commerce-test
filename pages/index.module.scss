@@ -7,10 +7,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-}
-
-.box {
   width: 1200px;
 }
 
@@ -48,4 +44,12 @@
 
 .product {
   margin-bottom: 40px;
+}
+
+.footerImage {
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    filter: brightness(1.1);
+  }
 }

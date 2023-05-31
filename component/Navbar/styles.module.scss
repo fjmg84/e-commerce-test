@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 5%;
 }
 
 .logo {
@@ -32,12 +31,14 @@
   justify-content: center;
   width: 100%;
   color: $blue;
+  gap: 10px;
 
   ul {
     display: flex;
     gap: 10px;
     list-style: none;
     text-transform: uppercase;
+    padding: 0;
 
     li {
       cursor: pointer;
