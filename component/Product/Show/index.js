@@ -1,14 +1,19 @@
+import { useEffect, useState } from "react";
 import { SideBySideMagnifier } from "react-image-magnifiers";
 import ImageCard from "../../../component/Common/Image";
-import styles from "./styles.module.scss";
 import useRate from "../../../hooks/useRate";
-import { useEffect, useState } from "react";
+import Button from "../../Common/Button";
+import styles from "./styles.module.scss";
 
 function ShowProduct({ data }) {
-  const [productData, setProductData] = useState({ ...data });
+  const [productData, setProductData] = useState({ product: {}, image: null });
   const { generated, rates } = useRate();
 
   const { product, image } = productData;
+
+  useEffect(() => {
+    setProductData({ ...data });
+  }, [data]);
 
   useEffect(() => {
     generated({
@@ -16,13 +21,17 @@ function ShowProduct({ data }) {
       colorFill: styles.fill,
       colorOutFill: styles.out_fill,
     });
-  }, [data]);
+  }, [productData]);
 
   const handleSelectImageProduct = (index) => {
     setProductData({
       ...productData,
       image: product.images[index],
     });
+  };
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -35,16 +44,20 @@ function ShowProduct({ data }) {
           <li>{product?.title}</li>
         </ul>
       </div>
+
       <div className={styles.product__container}>
         <div className={styles.product__gallery}>
-          <SideBySideMagnifier
-            imageSrc={image}
-            imageAlt="Example"
-            fillAvailableSpace={false}
-          />
+          {image && (
+            <SideBySideMagnifier
+              imageSrc={image}
+              imageAlt="Example"
+              fillAvailableSpace={false}
+            />
+          )}
 
-          {product?.images.length > 1 &&
-            product?.images?.map((image, index) => {
+          {product.images &&
+            product.images.length > 1 &&
+            product.images.map((image, index) => {
               return (
                 <div
                   key={index}
@@ -65,6 +78,19 @@ function ShowProduct({ data }) {
           </p>
           <p>{product?.description}</p>
 
+          {product?.count_stock > 0 && (
+            <div className={styles.form__container}>
+              <form>
+                <input type="number" defaultValue={1} />
+                <Button
+                  handler={(e) => handleAddToCart(e)}
+                  text="add to cart"
+                  myClassName={styles.btn}
+                />
+              </form>
+            </div>
+          )}
+
           <div>
             <table>
               <tbody>
@@ -83,6 +109,24 @@ function ShowProduct({ data }) {
               </tbody>
             </table>
           </div>
+        </div>
+
+        <div className={styles.product_info_extra}>
+          <ul>
+            <li className={styles.active}>
+              description
+              <span />
+            </li>
+            <li>
+              Additional information
+              <span />
+            </li>
+            <li>
+              Review (1)
+              <span />
+            </li>
+          </ul>
+          <div className={styles.product_info}>{product?.description}</div>
         </div>
       </div>
     </>

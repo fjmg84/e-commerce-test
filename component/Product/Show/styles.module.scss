@@ -34,8 +34,8 @@
 .product__container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 70%;
-    margin: 50px 0px;
 }
 
 .product__gallery {
@@ -46,7 +46,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 10px;
-    width: 650px;
+    width: 450px; //;
 
     div {
         cursor: pointer;
@@ -55,14 +55,14 @@
 
 .product__data {
     color: $blue;
-    width: 100%;
+    width: 47%;
 
     p:nth-child(3) {
         font-family: "Quicksand-VariableFont";
         color: gray;
         line-height: 1.4;
     }
-    div {
+    div:nth-last-child(1) {
         border: 1px solid #e5e4e4;
         padding: 10px;
 
@@ -93,10 +93,96 @@
     }
 }
 
+.product_info_extra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 0;
+    width: 100%;
+    ul {
+        color: $blue;
+        list-style: none;
+        display: flex;
+        gap: 50px;
+        margin-bottom: 50px;
+        font-size: 24px;
+        padding: 0;
+        align-items: baseline;
+        justify-content: center;
+
+        li {
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    }
+}
+
+.product_info {
+    color: gray;
+    font-family: "Quicksand-VariableFont";
+    line-height: 1.5;
+}
+
 .fill {
     color: $orange;
 }
 
 .out_fill {
     color: gray;
+}
+
+.form__container {
+    margin: 30px 0 100px;
+    form {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    input {
+        width: 70px;
+        height: 50px;
+        background-color: transparent;
+        outline: none;
+        border: 1px solid rgb(176, 174, 174);
+        padding: 0 10px;
+        font-size: 18px;
+        font-family: "Quicksand-VariableFont";
+    }
+}
+
+.btn {
+    background-color: $red;
+    outline: none;
+    border: 0;
+    span {
+        width: 150px;
+        height: 40px;
+        color: white;
+        background-color: $red;
+
+        border-color: white;
+        border-style: dashed;
+        padding: 10px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        font-family: "FrancoisOne-Regular";
+    }
+}
+
+.active {
+    span {
+        background: url("/recursos/main/home-8.png") no-repeat;
+        display: flex;
+        width: 72px;
+        height: 20px;
+    }
 }
