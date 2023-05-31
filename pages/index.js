@@ -6,7 +6,7 @@ import CategoriesList from "../component/Categories/List";
 import Search from "../component/Search";
 import NewsLetter from "../component/NewsLetter";
 import BestSellers from "../component/BestSellers";
-import CardProduct from "../component/CardProduct";
+import CardProduct from "../component/Product/Card";
 import BannerHead from "../component/Banners/Head";
 import BannerFooter from "../component/Banners/Footer";
 import ImageCard from "../component/Common/Image";

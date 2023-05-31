@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
-import ImageCard from "../Common/Image";
-import Button from "../Common/Button";
+import ImageCard from "../../Common/Image";
+import Button from "../../Common/Button";
 import Link from "next/link";
 
 function CardProduct({ product }) {
