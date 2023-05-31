@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Banner from "../component/Banner";
 import CategoriesCircle from "../component/Categories/Circle";
 import CategoriesList from "../component/Categories/List";
 import mockData from "../mock/data.json";
@@ -9,6 +8,8 @@ import Search from "../component/Search";
 import NewsLetter from "../component/NewsLetter";
 import BestSellers from "../component/BestSellers";
 import CardProduct from "../component/CardProduct";
+import BannerHead from "../component/Banners/Head";
+import BannerFooter from "../component/Banners/Footer";
 
 export default function Home({ categories, products }) {
   let betsSellers = Object.values(products);
@@ -20,7 +21,7 @@ export default function Home({ categories, products }) {
       </Head>
       <div className={styles.container}>
         <div className={styles.box}>
-          <Banner />
+          <BannerHead />
 
           <CategoriesCircle />
 
@@ -48,6 +49,7 @@ export default function Home({ categories, products }) {
           </div>
         </div>
       </div>
+      <BannerFooter />
     </>
   );
 }

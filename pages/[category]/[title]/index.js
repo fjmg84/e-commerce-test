@@ -1,6 +1,12 @@
 import Head from "next/head";
-
+import { usePathname } from "next/navigation";
 export default function ProductShow() {
+  const pathname = usePathname();
+  const category = pathname.split("/")[1];
+  const title = pathname.split("/")[2];
+
+  console.log(category, title);
+
   return (
     <>
       <Head>

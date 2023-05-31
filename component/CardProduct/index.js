@@ -1,8 +1,14 @@
 import styles from "./styles.module.scss";
 import ImageCard from "../Common/Image";
 import Button from "../Common/Button";
+import Link from "next/link";
 
 function CardProduct({ product }) {
+  const path = `/${product.category.replace(
+    " ",
+    "_"
+  )}/${product.title.replaceAll(" ", "_")}`;
+
   return (
     <div className={styles.container}>
       <div className={styles.boxCard}>
@@ -52,7 +58,9 @@ function CardProduct({ product }) {
 
       <div className={styles.descriptionCard}>
         <h5>{product.category}</h5>
-        <h4>{product.title}</h4>
+        <h4>
+          <Link href={path}>{product.title}</Link>
+        </h4>
         <h4>{`$${product.price}.00`}</h4>
         {product.count_stock < 1 && (
           <span className={styles.outOfStock}>out of stock</span>

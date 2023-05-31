@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Button from "../Common/Button";
+import Button from "../../Common/Button";
 import styles from "./styles.module.scss";
 
-function Banner() {
+function BannerHead() {
   const handleButton = (e) => {
     e.preventDefault();
   };
@@ -48,4 +48,4 @@ function Banner() {
   );
 }
 
-export default Banner;
+export default BannerHead;

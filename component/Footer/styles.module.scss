@@ -6,29 +6,7 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
   margin-top: 140px;
-}
-
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-  h1 {
-    text-transform: uppercase;
-    color: $blue;
-  }
-}
-
-.carousel {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin: 100px;
 }
 
 .container {
@@ -61,12 +39,4 @@
 .navbar li,
 .network li {
   cursor: pointer;
-}
-
-.footerImage {
-  cursor: pointer;
-  transition: all 0.5s;
-  &:hover {
-    filter: brightness(1.1);
-  }
 }
