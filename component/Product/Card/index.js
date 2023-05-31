@@ -1,13 +1,27 @@
-import styles from "./styles.module.scss";
+import { useEffect } from "react";
+import Link from "next/link";
 import ImageCard from "../../Common/Image";
 import Button from "../../Common/Button";
-import Link from "next/link";
+import useRate from "../../../hooks/useRate";
+import styles from "./styles.module.scss";
 
-function CardProduct({ product }) {
+function CardProduct({ product, showRate = false }) {
+  const { generated, rates } = useRate();
+
+  useEffect(() => {
+    generated({
+      value: product.rate,
+      colorFill: styles.fill,
+      colorOutFill: styles.out_fill,
+    });
+  }, []);
+
   const path = `/${product.category.replace(
     " ",
     "_"
   )}/${product.title.replaceAll(" ", "_")}`;
+
+  console.log(path);
 
   return (
     <div className={styles.container}>
@@ -64,6 +78,14 @@ function CardProduct({ product }) {
         <h4>{`$${product.price}.00`}</h4>
         {product.count_stock < 1 && (
           <span className={styles.outOfStock}>out of stock</span>
+        )}
+
+        {showRate && (
+          <p>
+            {rates.map((rate, index) => (
+              <i key={index} className={`${rate}`}></i>
+            ))}
+          </p>
         )}
       </div>
     </div>
