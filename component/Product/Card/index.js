@@ -1,22 +1,13 @@
-import { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 
 import ImageCard from "../../Common/Image";
 import Button from "../../Common/Button";
-import useRate from "../../../hooks/useRate";
+
 import styles from "./styles.module.scss";
+import Rate from "../../Common/Rate";
 
 function CardProduct({ product, showRate = false }) {
-  const { generated, rates } = useRate();
-
-  useEffect(() => {
-    generated({
-      value: product.rate,
-      colorFill: styles.fill,
-      colorOutFill: styles.out_fill,
-    });
-  }, []);
-
   return (
     <div className={styles.container}>
       <div className={styles.boxCard}>
@@ -86,9 +77,7 @@ function CardProduct({ product, showRate = false }) {
 
         {showRate && (
           <p>
-            {rates.map((rate, index) => (
-              <i key={index} className={`${rate}`}></i>
-            ))}
+            <Rate count={product.rate} />
           </p>
         )}
       </div>

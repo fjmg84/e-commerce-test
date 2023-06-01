@@ -1,27 +1,19 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SideBySideMagnifier } from "react-image-magnifiers";
 import ImageCard from "../../../component/Common/Image";
-import useRate from "../../../hooks/useRate";
+
 import Button from "../../Common/Button";
 import styles from "./styles.module.scss";
+import Rate from "../../Common/Rate";
 
 function ShowProduct({ data }) {
   const [productData, setProductData] = useState({ product: {}, image: null });
-  const { generated, rates } = useRate();
 
   const { product, image } = productData;
 
   useEffect(() => {
     setProductData({ ...data });
   }, [data]);
-
-  useEffect(() => {
-    generated({
-      value: product.rate,
-      colorFill: styles.fill,
-      colorOutFill: styles.out_fill,
-    });
-  }, [productData]);
 
   const handleSelectImageProduct = (index) => {
     setProductData({
@@ -72,9 +64,7 @@ function ShowProduct({ data }) {
         <div className={styles.product__data}>
           <p>{`$${product?.price}.00`}</p>
           <p>
-            {rates.map((rate, index) => (
-              <i key={index} className={`${rate}`}></i>
-            ))}
+            <Rate count={product.rate} />
           </p>
           <p>{product?.description}</p>
 
