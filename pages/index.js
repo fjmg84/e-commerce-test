@@ -31,12 +31,15 @@ export default function Home({ categories, products }) {
 
   useEffect(() => {
     let categoryFilter = searchParams.get("category");
-    if (categoryFilter) {
-      let productsFilter = products.filter(
+    let productsFilter = [];
+
+    if (categoryFilter)
+      productsFilter = products.filter(
         (product) => product.category === categoryFilter
       );
-      if (productsFilter.length > 0) setProductsData(productsFilter);
-    }
+    else productsFilter = products.filter((product) => product);
+
+    setProductsData(productsFilter);
   }, [searchParams]);
 
   return (
