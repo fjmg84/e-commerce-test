@@ -64,8 +64,7 @@ function CardProduct({ product, showRate = false }) {
         <Category category={product.category} />
         <Title title={product.title} category={product.category} />
 
-        <Price price={product.price} />
-
+        {product.count_stock > 1 && <Price price={product.price} />}
         {product.count_stock < 1 && (
           <span className={styles.outOfStock}>out of stock</span>
         )}

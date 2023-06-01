@@ -72,7 +72,7 @@
     border: none;
     color: white;
     text-transform: uppercase;
-    font-family: "FrancoisOne-Regular";
+    font-family: "Francois One", sans-serif;
     letter-spacing: 0.06em;
     span {
         border: none;
@@ -86,8 +86,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: baseline;
     gap: 10px;
+    height: 70px;
 
     h5 {
         color: $orange;
