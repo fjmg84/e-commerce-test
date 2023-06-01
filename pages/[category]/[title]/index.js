@@ -21,8 +21,8 @@ export default function ProductShow() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const category = pathname?.split("/")[1].replace("_", " ");
-    const title = pathname?.split("/")[2].replaceAll("_", " ");
+    const category = searchParams.get("category").replace("_", " ");
+    const title = searchParams.get("title").replaceAll("_", " ");
 
     if (category && title) {
       let productCategory = mockData.filter(
