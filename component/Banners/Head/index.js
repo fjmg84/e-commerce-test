@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import Button from "../../Common/Button";
 import styles from "./styles.module.scss";

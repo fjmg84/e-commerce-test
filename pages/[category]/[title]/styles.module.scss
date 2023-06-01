@@ -10,16 +10,18 @@
 .relative__products {
     display: flex;
     gap: 50px;
-    margin: 50px 0;
+    margin: 20px 0;
 }
 
 .relative__title {
-    color: $blue;
-    text-transform: uppercase;
-    font-family: "FrancoisOne-Regular";
     font-size: 24px;
-    font-weight: 100;
+    color: $blue;
+    font-weight: 500;
+}
+
+.banner_footer {
+    margin: 50px 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 25px;
 }

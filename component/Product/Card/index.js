@@ -27,6 +27,7 @@ function CardProduct({ product, showRate = false }) {
               width={210}
               height={300}
               alt={product.images[1]}
+              priority
             />
           </div>
         ) : (
@@ -59,7 +60,7 @@ function CardProduct({ product, showRate = false }) {
         </div>
       </div>
 
-      <div className={styles.descriptionCard}>
+      <div className={styles.description__card}>
         <Category category={product.category} />
         <Title title={product.title} category={product.category} />
         <Price price={product.price} />

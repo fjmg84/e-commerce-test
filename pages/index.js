@@ -46,7 +46,6 @@ export default function Home({ categories, products }) {
       </Head>
       <div className={styles.container}>
         <BannerHead />
-
         <CategoriesCircle />
 
         <div className={styles.mainBox}>
@@ -73,20 +72,25 @@ export default function Home({ categories, products }) {
         </div>
       </div>
 
-      <BannerFooter title="instagram @kidsrus">
-        {imagesFooter.map((image, index) => {
-          return (
-            <ImageCard
-              key={index}
-              myClassName={styles.footer__image}
-              path={image}
-              alt={image}
-              width={230}
-              height={230}
-            />
-          );
-        })}
-      </BannerFooter>
+      <div className={styles.banner__footer}>
+        <BannerFooter
+          title="instagram @kidsrus"
+          myClassName={styles.kidsrus_title}
+        >
+          {imagesFooter.map((image, index) => {
+            return (
+              <ImageCard
+                key={index}
+                myClassName={styles.footer__image}
+                path={image}
+                alt={image}
+                width={230}
+                height={230}
+              />
+            );
+          })}
+        </BannerFooter>
+      </div>
     </>
   );
 }

@@ -35,6 +35,9 @@
   flex-direction: column;
   gap: 15px;
   padding: 0% 0% 5% 5%;
+  h4 {
+    font-family: "Quicksand", sans-serif;
+  }
 }
 
 .banner_1_btn {
@@ -51,7 +54,7 @@
   background: white;
   border: none;
   text-transform: uppercase;
-  font-family: "FrancoisOne-Regular";
+  font-family: "Francois One", sans-serif;
   color: $blue;
   border: none;
   outline: none;
@@ -70,6 +73,6 @@
   }
   h4 {
     color: gray;
-    font-family: "Quicksand-VariableFont";
+    font-family: "Quicksand", sans-serif;
   }
 }

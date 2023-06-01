@@ -34,7 +34,11 @@ function ShowProduct({ data }) {
     <>
       <div className={styles.title__container}>
         {product.title && product.category && (
-          <Title title={product.title} category={product.category} />
+          <Title
+            title={product.title}
+            category={product.category}
+            myClassName={styles.product__title}
+          />
         )}
 
         <ul>
@@ -92,7 +96,7 @@ function ShowProduct({ data }) {
             </div>
           )}
 
-          <div>
+          <div className={styles.product__info__table}>
             <table>
               <tbody>
                 <tr>
@@ -127,7 +131,7 @@ function ShowProduct({ data }) {
               <span />
             </li>
           </ul>
-          <div className={styles.product_info}>{product?.description}</div>
+          <Description description={product?.description} />
         </div>
       </div>
     </>

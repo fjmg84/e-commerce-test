@@ -45,19 +45,19 @@ export default function ProductShow() {
       <Head>
         <title>E-Commerce Product</title>
       </Head>
-      {product.product ? <ShowProduct data={product} /> : <h1>Loading...</h1>}
+      {product.product && <ShowProduct data={product} />}
 
       {product.relative && (
-        <BannerFooter
-          title="Relative Product"
-          myClassName={styles.relative__title}
-        >
-          <div className={styles.relative__products}>
+        <div className={styles.banner_footer}>
+          <BannerFooter
+            title="Relative Product"
+            myClassName={styles.relative__title}
+          >
             {product.relative.map((product, index) => (
               <CardProduct key={index} product={product} showRate={true} />
             ))}
-          </div>
-        </BannerFooter>
+          </BannerFooter>
+        </div>
       )}
     </>
   );
