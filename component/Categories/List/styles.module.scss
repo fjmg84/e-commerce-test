@@ -2,6 +2,11 @@
 .container {
   color: $blue;
 
+  h1 {
+    text-transform: uppercase;
+    font-weight: 200;
+  }
+
   ul {
     display: inline;
     list-style: none;
@@ -15,6 +20,9 @@
       a {
         color: $blue;
         text-decoration: none;
+        &:hover {
+          color: $red;
+        }
       }
       div {
         display: flex;

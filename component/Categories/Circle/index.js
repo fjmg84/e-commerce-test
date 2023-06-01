@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
+import Link from "next/link";
 
 function CategoriesCircle() {
   return (
@@ -13,7 +14,16 @@ function CategoriesCircle() {
             alt="Baby & Toddler"
             className={styles.slider}
           />
-          <h5>Baby & Toddler</h5>
+          <h5>
+            <Link
+              href={{
+                pathname: "/",
+                query: { category: "For Babies" },
+              }}
+            >
+              Baby & Toddler
+            </Link>
+          </h5>
         </div>
         <div>
           <Image
@@ -23,7 +33,16 @@ function CategoriesCircle() {
             alt="For Girls"
             className={styles.slider}
           />
-          <h5>For Girls</h5>
+          <h5>
+            <Link
+              href={{
+                pathname: "/",
+                query: { category: "For Girls" },
+              }}
+            >
+              For Girls
+            </Link>
+          </h5>
         </div>
         <div>
           <Image
@@ -33,7 +52,16 @@ function CategoriesCircle() {
             alt="For Boys"
             className={styles.slider}
           />
-          <h5>For Boys</h5>
+          <h5>
+            <Link
+              href={{
+                pathname: "/",
+                query: { category: "For Boys" },
+              }}
+            >
+              For Boys
+            </Link>
+          </h5>
         </div>
         <div>
           <Image
@@ -43,7 +71,16 @@ function CategoriesCircle() {
             alt="Home & Toys"
             className={styles.slider}
           />
-          <h5>Home & Toys</h5>
+          <h5>
+            <Link
+              href={{
+                pathname: "/",
+                query: { category: "For Home" },
+              }}
+            >
+              Home & Toys
+            </Link>
+          </h5>
         </div>
       </div>
     </>

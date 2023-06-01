@@ -10,7 +10,12 @@ function CategoriesList({ categories }) {
           {categories.map((category, index) => {
             return (
               <li key={index}>
-                <Link href="">
+                <Link
+                  href={{
+                    pathname: "/",
+                    query: { category: category.name },
+                  }}
+                >
                   <div>
                     <span>{category.name}</span>
                     <span>({category.count})</span>

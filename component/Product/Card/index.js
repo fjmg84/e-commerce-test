@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Link from "next/link";
+
 import ImageCard from "../../Common/Image";
 import Button from "../../Common/Button";
 import useRate from "../../../hooks/useRate";
@@ -15,13 +16,6 @@ function CardProduct({ product, showRate = false }) {
       colorOutFill: styles.out_fill,
     });
   }, []);
-
-  const path = `/${product.category.replace(
-    " ",
-    "_"
-  )}/${product.title.replaceAll(" ", "_")}`;
-
-  console.log(path);
 
   return (
     <div className={styles.container}>
@@ -73,7 +67,17 @@ function CardProduct({ product, showRate = false }) {
       <div className={styles.descriptionCard}>
         <h5>{product.category}</h5>
         <h4>
-          <Link href={path}>{product.title}</Link>
+          <Link
+            href={{
+              pathname: "/[category]/[title]",
+              query: {
+                category: product.category.replaceAll(" ", "_"),
+                title: product.title.replaceAll(" ", "_"),
+              },
+            }}
+          >
+            {product.title}
+          </Link>
         </h4>
         <h4>{`$${product.price}.00`}</h4>
         {product.count_stock < 1 && (
