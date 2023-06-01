@@ -1,11 +1,13 @@
 import React from "react";
-import Link from "next/link";
+import Image from "next/image";
 
-import ImageCard from "../../Common/Image";
 import Button from "../../Common/Button";
+import Rate from "../Common/Rate";
+import Category from "../Common/Category";
+import Title from "../Common/Title";
+import Price from "../Common/Price";
 
 import styles from "./styles.module.scss";
-import Rate from "../../Common/Rate";
 
 function CardProduct({ product, showRate = false }) {
   return (
@@ -13,25 +15,27 @@ function CardProduct({ product, showRate = false }) {
       <div className={styles.boxCard}>
         {product.images.length >= 2 ? (
           <div className={styles.boxCardImages}>
-            <ImageCard
-              path={product.images[0]}
+            <Image
+              src={product.images[0]}
               width={210}
               height={300}
               alt={product.images[0]}
+              priority
             />
-            <ImageCard
-              path={product.images[1]}
+            <Image
+              src={product.images[1]}
               width={210}
               height={300}
               alt={product.images[1]}
             />
           </div>
         ) : (
-          <ImageCard
-            path={product.images[0]}
+          <Image
+            src={product.images[0]}
             width={210}
             height={300}
             alt={product.images[0]}
+            priority
           />
         )}
 
@@ -56,21 +60,10 @@ function CardProduct({ product, showRate = false }) {
       </div>
 
       <div className={styles.descriptionCard}>
-        <h5>{product.category}</h5>
-        <h4>
-          <Link
-            href={{
-              pathname: "/[category]/[title]",
-              query: {
-                category: product.category.replaceAll(" ", "_"),
-                title: product.title.replaceAll(" ", "_"),
-              },
-            }}
-          >
-            {product.title}
-          </Link>
-        </h4>
-        <h4>{`$${product.price}.00`}</h4>
+        <Category category={product.category} />
+        <Title title={product.title} category={product.category} />
+        <Price price={product.price} />
+
         {product.count_stock < 1 && (
           <span className={styles.outOfStock}>out of stock</span>
         )}

@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import Rate from "../../Common/Rate";
+
+import Rate from "../Common/Rate";
+import Price from "../Common/Price";
+import Title from "../Common/Title";
 import styles from "./styles.module.scss";
 
 function BestProducts({ products }) {
@@ -22,23 +24,9 @@ function BestProducts({ products }) {
               </div>
 
               <div className={styles.box_desc}>
-                <h4>
-                  <Link
-                    href={{
-                      pathname: "/[category]/[title]",
-                      query: {
-                        category: product.category.replaceAll(" ", "_"),
-                        title: product.title.replaceAll(" ", "_"),
-                      },
-                    }}
-                  >
-                    {product.title}
-                  </Link>
-                </h4>
-                <h4>
-                  <Rate count={product.rate} />
-                </h4>
-                <h4>{`$${product.price}.00`}</h4>
+                <Title title={product.title} category={product.category} />
+                <Rate count={product.rate} />
+                <Price price={product.price} />
               </div>
             </div>
           );

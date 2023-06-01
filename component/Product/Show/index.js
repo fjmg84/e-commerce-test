@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { SideBySideMagnifier } from "react-image-magnifiers";
-import ImageCard from "../../../component/Common/Image";
+import Image from "next/image";
 
 import Button from "../../Common/Button";
+import Rate from "../Common/Rate";
+import Price from "../Common/Price";
+import Title from "../Common/Title";
+import Description from "../Common/Description";
+
 import styles from "./styles.module.scss";
-import Rate from "../../Common/Rate";
 
 function ShowProduct({ data }) {
   const [productData, setProductData] = useState({ product: {}, image: null });
@@ -29,7 +33,10 @@ function ShowProduct({ data }) {
   return (
     <>
       <div className={styles.title__container}>
-        <h1>{product?.title}</h1>
+        {product.title && product.category && (
+          <Title title={product.title} category={product.category} />
+        )}
+
         <ul>
           <li>Home : </li>
           <li>{product?.category} : </li>
@@ -55,18 +62,22 @@ function ShowProduct({ data }) {
                   key={index}
                   onClick={() => handleSelectImageProduct(index)}
                 >
-                  <ImageCard path={image} alt={image} width={50} height={80} />
+                  <Image
+                    src={image}
+                    alt={image}
+                    width={50}
+                    height={80}
+                    priority
+                  />
                 </div>
               );
             })}
         </div>
 
         <div className={styles.product__data}>
-          <p>{`$${product?.price}.00`}</p>
-          <p>
-            <Rate count={product.rate} />
-          </p>
-          <p>{product?.description}</p>
+          <Price price={product.price} />
+          <Rate count={product.rate} />
+          <Description description={product.description} />
 
           {product?.count_stock > 0 && (
             <div className={styles.form__container}>
