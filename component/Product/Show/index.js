@@ -80,7 +80,9 @@ function ShowProduct({ data }) {
 
         <div className={styles.product__data}>
           <Price price={product.price} />
-          <Rate count={product.rate} />
+          <p>
+            <Rate count={product.rate} />
+          </p>
           <Description description={product.description} />
 
           {product?.count_stock > 0 && (

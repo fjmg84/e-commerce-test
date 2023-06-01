@@ -63,6 +63,7 @@ function CardProduct({ product, showRate = false }) {
       <div className={styles.description__card}>
         <Category category={product.category} />
         <Title title={product.title} category={product.category} />
+
         <Price price={product.price} />
 
         {product.count_stock < 1 && (

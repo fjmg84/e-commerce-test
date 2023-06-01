@@ -16,11 +16,11 @@ function Rate({ count = 5 }) {
   }, [count]);
 
   return (
-    <div>
+    <>
       {stars.map((star, index) => (
         <i key={index} className={star}></i>
       ))}
-    </div>
+    </>
   );
 }
 
