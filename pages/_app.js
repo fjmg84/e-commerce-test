@@ -1,3 +1,4 @@
+import React from "react";
 import PageLayout from "../component/PageLayout";
 import "animate.css";
 import "../styles/global.scss";
