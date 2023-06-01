@@ -16,6 +16,16 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap"
           rel="stylesheet"
         />
+
+        <link
+          href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+          rel="stylesheet"
+        />
+
+        <link
+          href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <body>
         <Main />
