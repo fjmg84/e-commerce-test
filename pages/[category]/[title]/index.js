@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import { usePathname, useSearchParams } from "next/navigation";
 
 import mockData from "../../../mock/data.json";
 
@@ -10,20 +9,14 @@ import BannerFooter from "../../../component/Banners/Footer";
 
 import styles from "./styles.module.scss";
 
-export default function ProductShow() {
+export default function ProductShow({ category, title }) {
   const [product, setProduct] = useState({
     product: null,
     image: null,
     relative: [],
   });
 
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
   useEffect(() => {
-    const category = searchParams.get("category").replace("_", " ");
-    const title = searchParams.get("title").replaceAll("_", " ");
-
     if (category && title) {
       let productCategory = mockData.filter(
         (data) => data.category === category
@@ -38,7 +31,7 @@ export default function ProductShow() {
         relative: productCategory.slice(1, 4),
       });
     }
-  }, [pathname, searchParams]);
+  }, []);
 
   return (
     <>
@@ -61,4 +54,29 @@ export default function ProductShow() {
       )}
     </>
   );
+}
+
+export async function getStaticPaths() {
+  const productsPath = mockData.slice(0, 5).map((arr) => {
+    return {
+      params: { category: arr.category, title: arr.title },
+    };
+  });
+
+  return {
+    paths: productsPath,
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps(context) {
+  const category = context.params.category.replace("_", " ");
+  const title = context.params.title.replaceAll("_", " ");
+
+  return {
+    props: {
+      category,
+      title,
+    },
+  };
 }
