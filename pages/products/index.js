@@ -24,7 +24,7 @@ const IMAGES_ARRAY = [
   "/recursos/main/85051426_2060664737412512_8458893884651247910_nlow.jpg",
 ];
 
-export default function Home({ categories, products }) {
+export default function ProductHome({ categories, products }) {
   const [productsData, setProductsData] = useState(products);
   const [imagesFooter] = useState(IMAGES_ARRAY);
   const searchParams = useSearchParams();
