@@ -25,7 +25,9 @@ function BestProducts({ products }) {
 
               <div className={styles.box_desc}>
                 <Title title={product.title} category={product.category} />
-                <Rate count={product.rate} />
+                <div>
+                  <Rate count={product.rate} />
+                </div>
                 <Price price={product.price} />
               </div>
             </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import Button from "../../Common/Button";
+import Button from "../../../../component/Common/Button";
 import Rate from "../Common/Rate";
 import Category from "../Common/Category";
 import Title from "../Common/Title";

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 
-import mockData from "../../../mock/data.json";
+import ShowProduct from "../../components/Show";
+import CardProduct from "../../components/Card";
+import BannerFooter from "../../../../component/Banners/Footer";
 
-import ShowProduct from "../../../component/Product/Show";
-import CardProduct from "../../../component/Product/Card";
-import BannerFooter from "../../../component/Banners/Footer";
-
+import mockData from "../../../../mock/data.json";
 import styles from "./styles.module.scss";
 
 export default function ProductShow({ category, title }) {
@@ -17,26 +16,22 @@ export default function ProductShow({ category, title }) {
   });
 
   useEffect(() => {
-    if (category && title) {
-      let productCategory = mockData.filter(
-        (data) => data.category === category
-      );
-      let productFilter = productCategory.filter(
-        (product) => product.title === title
-      );
+    let productCategory = mockData.filter((data) => data.category === category);
+    let productFilter = productCategory.filter(
+      (product) => product.title === title
+    );
 
-      setProduct({
-        product: productFilter[0],
-        image: productFilter[0].images[0],
-        relative: productCategory.slice(1, 4),
-      });
-    }
-  }, []);
+    setProduct({
+      product: productFilter[0],
+      image: productFilter[0].images[0],
+      relative: productCategory.slice(1, 4),
+    });
+  }, [category, title]);
 
   return (
     <>
       <Head>
-        <title>E-Commerce Product</title>
+        <title>{`E-Commerce ${category}-${title}`}</title>
       </Head>
       {product.product && <ShowProduct data={product} />}
 

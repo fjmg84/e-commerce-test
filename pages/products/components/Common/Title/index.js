@@ -1,11 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import styles from "./styles.module.scss";
+
 function Title({ title, category, myClassName = null }) {
   return (
-    <h4 className={myClassName}>
+    <h4 className={`${myClassName} ${styles.title}`}>
       <Link
         href={{
-          pathname: "/[category]/[title]",
+          pathname: "/products/[category]/[title]",
           query: {
             category: category?.replaceAll(" ", "_"),
             title: title?.replaceAll(" ", "_"),

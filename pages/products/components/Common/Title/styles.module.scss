@@ -1,0 +1,11 @@
+@import "../../../../../styles/colors.scss";
+
+.title {
+    a {
+        color: $blue;
+        &:hover {
+            color: $orange;
+        }
+    }
+    font-family: "Gilda Display", serif;
+}

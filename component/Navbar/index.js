@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -26,8 +27,8 @@ function Navbar() {
 
         <div className={styles.navbar}>
           <ul className={styles.links}>
-            <li className={pathname === "/" ? styles.active : ""}>
-              <Link href={"/"}>home</Link>
+            <li className={pathname === "/products" ? styles.active : ""}>
+              <Link href={"/products"}>home</Link>
 
               <span />
             </li>

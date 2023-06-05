@@ -44,6 +44,10 @@
       cursor: pointer;
       transition: all 0.2s;
 
+      a {
+        color: $blue;
+      }
+
       &:hover {
         color: $orange;
       }

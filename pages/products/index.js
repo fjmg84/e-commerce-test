@@ -2,29 +2,31 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useSearchParams } from "next/navigation";
 
-import CategoriesCircle from "../component/Categories/Circle";
-import CategoriesList from "../component/Categories/List";
-import Search from "../component/Search";
-import NewsLetter from "../component/NewsLetter";
-import BestProducts from "../component/Product/Best";
-import CardProduct from "../component/Product/Card";
-import BannerHead from "../component/Banners/Head";
-import BannerFooter from "../component/Banners/Footer";
-import ImageCard from "../component/Common/Image";
+import CategoriesCircle from "../../component/Categories/Circle";
+import CategoriesList from "../../component/Categories/List";
+import Search from "../../component/Search";
+import NewsLetter from "../../component/NewsLetter";
+import BestProducts from "../products/components/Best";
+import CardProduct from "../products/components/Card";
+import BannerHead from "../../component/Banners/Head";
+import BannerFooter from "../../component/Banners/Footer";
+import ImageCard from "../../component/Common/Image";
 
-import { orderArray, unorderedArray } from "../utils/functions/orderArray";
-import mockData from "../mock/data.json";
-import styles from "../pages/index.module.scss";
+import { orderArray, unorderedArray } from "../../utils/functions/orderArray";
+import mockData from "../../mock/data.json";
+import styles from "./index.module.scss";
+
+const IMAGES_ARRAY = [
+  "/recursos/main/87339849_530805007551424_292323017375800029_nlow.jpg",
+  "/recursos/main/87413583_2660130777540405_5722961474466513534_nlow.jpg",
+  "/recursos/main/85069033_185901059177965_6767010623440980864_nlow.jpg",
+  "/recursos/main/84981049_620107085435507_4260875787090681190_nlow.jpg",
+  "/recursos/main/85051426_2060664737412512_8458893884651247910_nlow.jpg",
+];
 
 export default function Home({ categories, products }) {
   const [productsData, setProductsData] = useState(products);
-  const [imagesFooter] = useState([
-    "/recursos/main/87339849_530805007551424_292323017375800029_nlow.jpg",
-    "/recursos/main/87413583_2660130777540405_5722961474466513534_nlow.jpg",
-    "/recursos/main/85069033_185901059177965_6767010623440980864_nlow.jpg",
-    "/recursos/main/84981049_620107085435507_4260875787090681190_nlow.jpg",
-    "/recursos/main/85051426_2060664737412512_8458893884651247910_nlow.jpg",
-  ]);
+  const [imagesFooter] = useState(IMAGES_ARRAY);
   const searchParams = useSearchParams();
 
   let betsSellers = Object.values(products);

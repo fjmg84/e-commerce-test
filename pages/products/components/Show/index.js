@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SideBySideMagnifier } from "react-image-magnifiers";
 import Image from "next/image";
 
-import Button from "../../Common/Button";
+import Button from "../../../../component/Common/Button";
 import Rate from "../Common/Rate";
 import Price from "../Common/Price";
 import Title from "../Common/Title";

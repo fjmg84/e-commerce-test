@@ -1,4 +1,4 @@
-@import "../../../styles/colors.scss";
+@import "../../../../styles/colors.scss";
 
 .container {
     display: flex;
@@ -93,11 +93,6 @@
     h5 {
         color: $orange;
         font-family: "Quicksand", sans-serif;
-    }
-
-    h4 {
-        color: $blue;
-        font-family: "Gilda Display", serif;
     }
 
     p {
