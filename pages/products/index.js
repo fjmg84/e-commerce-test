@@ -37,7 +37,7 @@ export default function ProductHome({ categories, products }) {
 
     if (categoryFilter)
       productsFilter = products.filter(
-        (product) => product.category === categoryFilter
+        (product) => product.category === categoryFilter.replaceAll("_", " ")
       );
     else productsFilter = products.filter((product) => product);
 

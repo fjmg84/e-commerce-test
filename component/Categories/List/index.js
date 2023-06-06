@@ -13,7 +13,7 @@ function CategoriesList({ categories }) {
                 <Link
                   href={{
                     pathname: "/",
-                    query: { category: category.name },
+                    query: { category: category.name.replaceAll(" ", "_") },
                   }}
                 >
                   <div>
