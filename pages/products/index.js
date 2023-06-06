@@ -62,7 +62,10 @@ export default function ProductHome({ categories, products }) {
           <aside>
             <Search />
             <CategoriesList categories={categories} />
-            <BestProducts products={betsSellers.slice(0, 4)} />
+            {betsSellers.length > 0 && (
+              <BestProducts products={betsSellers.slice(0, 4)} />
+            )}
+
             <NewsLetter />
           </aside>
           <main>
