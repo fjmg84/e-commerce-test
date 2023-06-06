@@ -25,7 +25,7 @@ const IMAGES_ARRAY = [
 ];
 
 export default function ProductHome({ categories, products }) {
-  const [productsData, setProductsData] = useState(products);
+  const [productsData, setProductsData] = useState([]);
   const [imagesFooter] = useState(IMAGES_ARRAY);
   const searchParams = useSearchParams();
 
@@ -66,13 +66,14 @@ export default function ProductHome({ categories, products }) {
             <NewsLetter />
           </aside>
           <main>
-            {productsData.map((product) => {
-              return (
-                <div key={product.sku} className={styles.product}>
-                  <CardProduct product={product} />
-                </div>
-              );
-            })}
+            {productsData.length > 0 &&
+              productsData.map((product) => {
+                return (
+                  <div key={product.sku} className={styles.product}>
+                    <CardProduct product={product} />
+                  </div>
+                );
+              })}
           </main>
         </div>
       </div>

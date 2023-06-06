@@ -9,33 +9,45 @@ import Price from "../Common/Price";
 
 import styles from "./styles.module.scss";
 
-function CardProduct({ product, showRate = false }) {
+function CardProduct({
+  product = {
+    images: [],
+    category: undefined,
+    title: undefined,
+    price: undefined,
+    rate: undefined,
+    count_stock: undefined,
+  },
+  showRate = false,
+}) {
+  const { images, category, title, price, rate, count_stock } = product;
+
   return (
     <div className={styles.container}>
       <div className={styles.boxCard}>
-        {product?.images.length >= 2 ? (
+        {images.length >= 2 ? (
           <div className={styles.boxCardImages}>
             <Image
-              src={product.images[0]}
+              src={images[0]}
               width={210}
               height={300}
-              alt={product.images[0]}
+              alt={images[0]}
               priority
             />
             <Image
-              src={product.images[1]}
+              src={images[1]}
               width={210}
               height={300}
-              alt={product.images[1]}
+              alt={images[1]}
               priority
             />
           </div>
         ) : (
           <Image
-            src={product?.images[0]}
+            src={images[0]}
             width={210}
             height={300}
-            alt={product?.images[0]}
+            alt={images[0]}
             priority
           />
         )}
@@ -46,7 +58,7 @@ function CardProduct({ product, showRate = false }) {
               image={"fa fa-heart-o"}
               myClassName={styles.boxCardActionsBtn}
             />
-            {product?.count_stock > 1 && (
+            {count_stock > 1 && (
               <Button
                 text="add to cart"
                 myClassName={styles.boxCardActionsBtn}
@@ -61,17 +73,19 @@ function CardProduct({ product, showRate = false }) {
       </div>
 
       <div className={styles.description__card}>
-        <Category category={product?.category} />
-        <Title title={product?.title} category={product?.category} />
+        {category && <Category category={category} />}
 
-        {product?.count_stock > 1 && <Price price={product?.price} />}
-        {product?.count_stock < 1 && (
+        {category && title && <Title title={title} category={category} />}
+
+        {count_stock > 1 ? (
+          <Price price={price} />
+        ) : (
           <span className={styles.outOfStock}>out of stock</span>
         )}
 
         {showRate && (
           <p>
-            <Rate count={product?.rate} />
+            <Rate count={rate} />
           </p>
         )}
       </div>
