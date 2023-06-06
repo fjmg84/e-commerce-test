@@ -10,19 +10,37 @@ import Description from "../Common/Description";
 
 import styles from "./styles.module.scss";
 
-function ShowProduct({ data }) {
-  const [productData, setProductData] = useState({ product: {}, image: null });
+function ShowProduct({ productShow, imageShow }) {
+  const [productSelected, setProductSelected] = useState({
+    product: {
+      sku: null,
+      title: null,
+      category: null,
+      images: [],
+      price: null,
+      rate: null,
+      description: null,
+      tags: [],
+    },
+    image: null,
+  });
 
-  const { product, image } = productData;
+  const { product, image } = productSelected;
+  const { sku, title, category, images, price, rate, description, tags } =
+    product;
 
   useEffect(() => {
-    setProductData({ ...data });
-  }, [data]);
+    setProductSelected({
+      ...productSelected,
+      product: { ...productShow },
+      image: imageShow,
+    });
+  }, [productShow, imageShow]);
 
   const handleSelectImageProduct = (index) => {
-    setProductData({
-      ...productData,
-      image: product.images[index],
+    setProductSelected({
+      ...productSelected,
+      image: images[index],
     });
   };
 
@@ -33,18 +51,18 @@ function ShowProduct({ data }) {
   return (
     <>
       <div className={styles.title__container}>
-        {product.title && product.category && (
+        {title && category && (
           <Title
-            title={product.title}
-            category={product.category}
+            title={title}
+            category={category}
             myClassName={styles.product__title}
           />
         )}
 
         <ul>
           <li>Home : </li>
-          <li>{product?.category} : </li>
-          <li>{product?.title}</li>
+          {category && <li>{category} : </li>}
+          {title && <li>{title}</li>}
         </ul>
       </div>
 
@@ -53,14 +71,14 @@ function ShowProduct({ data }) {
           {image && (
             <SideBySideMagnifier
               imageSrc={image}
-              imageAlt="Example"
+              imageAlt="image effects"
               fillAvailableSpace={false}
             />
           )}
 
-          {product.images &&
-            product.images.length > 1 &&
-            product.images.map((image, index) => {
+          {images &&
+            images.length > 1 &&
+            images.map((image, index) => {
               return (
                 <div
                   key={index}
@@ -79,12 +97,13 @@ function ShowProduct({ data }) {
         </div>
 
         <div className={styles.product__data}>
-          <Price price={product.price} />
-          <p>
-            <Rate count={product.rate} />
-          </p>
-          <Description description={product.description} />
-
+          {price && <Price price={price} />}
+          {rate && (
+            <div>
+              <Rate count={rate} />
+            </div>
+          )}
+          {description && <Description description={description} />}
           {product?.count_stock > 0 && (
             <div className={styles.form__container}>
               <form>
@@ -101,18 +120,24 @@ function ShowProduct({ data }) {
           <div className={styles.product__info__table}>
             <table>
               <tbody>
-                <tr>
-                  <td>SKU</td>
-                  <td>{product?.sku}</td>
-                </tr>
-                <tr>
-                  <td>Category</td>
-                  <td>{product?.category}</td>
-                </tr>
-                <tr>
-                  <td>Tag</td>
-                  <td>{product?.tags?.join(",")}</td>
-                </tr>
+                {sku && (
+                  <tr>
+                    <td>SKU</td>
+                    <td>{sku}</td>
+                  </tr>
+                )}
+                {category && (
+                  <tr>
+                    <td>Category</td>
+                    <td>{category}</td>
+                  </tr>
+                )}
+                {tags && (
+                  <tr>
+                    <td>Tag</td>
+                    <td>{tags.join(",")}</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
@@ -133,7 +158,7 @@ function ShowProduct({ data }) {
               <span />
             </li>
           </ul>
-          <Description description={product?.description} />
+          {description && <Description description={description} />}
         </div>
       </div>
     </>

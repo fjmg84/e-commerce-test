@@ -9,11 +9,13 @@ import mockData from "../../../../mock/data.json";
 import styles from "./styles.module.scss";
 
 export default function ProductShow({ category, title }) {
-  const [product, setProduct] = useState({
-    product: null,
-    image: null,
-    relative: [],
+  const [data, setData] = useState({
+    productShow: {},
+    imageShow: undefined,
+    productsRelatives: [],
   });
+
+  const { productShow, imageShow, productsRelatives } = data;
 
   useEffect(() => {
     let productCategory = mockData.filter((data) => data.category === category);
@@ -21,10 +23,10 @@ export default function ProductShow({ category, title }) {
       (product) => product.title === title
     );
 
-    setProduct({
-      product: productFilter[0],
-      image: productFilter[0].images[0],
-      relative: productCategory.slice(1, 4),
+    setData({
+      productShow: productFilter[0],
+      imageShow: productFilter[0].images[0],
+      productsRelatives: productCategory.slice(1, 4),
     });
   }, [category, title]);
 
@@ -33,15 +35,17 @@ export default function ProductShow({ category, title }) {
       <Head>
         <title>{`E-Commerce ${category}-${title}`}</title>
       </Head>
-      {product.product && <ShowProduct data={product} />}
+      {productShow && (
+        <ShowProduct productShow={productShow} imageShow={imageShow} />
+      )}
 
-      {product.relative && (
+      {productsRelatives && (
         <div className={styles.banner_footer}>
           <BannerFooter
             title="Relative Product"
             myClassName={styles.relative__title}
           >
-            {product.relative.map((product, index) => (
+            {productsRelatives.map((product, index) => (
               <CardProduct key={index} product={product} showRate={true} />
             ))}
           </BannerFooter>
