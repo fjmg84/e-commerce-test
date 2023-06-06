@@ -11,7 +11,7 @@ function BestProducts({ products }) {
     <div className={styles.container}>
       <h1>Best Sellers</h1>
       <div className={styles.container_list}>
-        {products.map((product) => {
+        {products?.map((product) => {
           return (
             <div key={product.sku} className={styles.box}>
               <div className={styles.box_image}>

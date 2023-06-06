@@ -24,15 +24,3 @@ module.exports = {
     "react/prop-types": 0,
   },
 };
-
-/* "paths": {
-      "@public/*": ["public/*"],
-      "@common/*": ["src/common/*"],
-      "@api/*": ["src/common/Api/*"],
-      "@components/*": ["src/common/Components/*"],
-      "@redux/*": ["src/common/Redux/*"],
-      "@styles/*": ["src/common/Styles/*"],
-      "@utils/*": ["src/common/Utils/*"],
-      "@modules/*": ["src/modules/*"],
-      "@pages/*": ["src/pages/*"]
-    }, */

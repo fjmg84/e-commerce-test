@@ -13,7 +13,7 @@ function CardProduct({ product, showRate = false }) {
   return (
     <div className={styles.container}>
       <div className={styles.boxCard}>
-        {product.images.length >= 2 ? (
+        {product?.images.length >= 2 ? (
           <div className={styles.boxCardImages}>
             <Image
               src={product.images[0]}
@@ -32,10 +32,10 @@ function CardProduct({ product, showRate = false }) {
           </div>
         ) : (
           <Image
-            src={product.images[0]}
+            src={product?.images[0]}
             width={210}
             height={300}
-            alt={product.images[0]}
+            alt={product?.images[0]}
             priority
           />
         )}
@@ -46,7 +46,7 @@ function CardProduct({ product, showRate = false }) {
               image={"fa fa-heart-o"}
               myClassName={styles.boxCardActionsBtn}
             />
-            {product.count_stock > 1 && (
+            {product?.count_stock > 1 && (
               <Button
                 text="add to cart"
                 myClassName={styles.boxCardActionsBtn}
@@ -61,17 +61,17 @@ function CardProduct({ product, showRate = false }) {
       </div>
 
       <div className={styles.description__card}>
-        <Category category={product.category} />
-        <Title title={product.title} category={product.category} />
+        <Category category={product?.category} />
+        <Title title={product?.title} category={product?.category} />
 
-        {product.count_stock > 1 && <Price price={product.price} />}
-        {product.count_stock < 1 && (
+        {product?.count_stock > 1 && <Price price={product?.price} />}
+        {product?.count_stock < 1 && (
           <span className={styles.outOfStock}>out of stock</span>
         )}
 
         {showRate && (
           <p>
-            <Rate count={product.rate} />
+            <Rate count={product?.rate} />
           </p>
         )}
       </div>
