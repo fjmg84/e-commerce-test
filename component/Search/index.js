@@ -5,6 +5,7 @@ import styles from "./styles.module.scss";
 function Search() {
   const handleSearch = (e) => {
     e.preventDefault();
+    console.log(`Search`);
   };
 
   return (
@@ -13,7 +14,7 @@ function Search() {
         <input type="search" name="search" placeholder="Search products..." />
         <div className={styles.btn_container}>
           <Button
-            handler={(e) => handleSearch(e)}
+            handler={handleSearch}
             image="fa fa-search"
             myClassName={styles.btn}
           />

@@ -3,6 +3,10 @@ import Button from "../Common/Button";
 import styles from "./styles.module.scss";
 
 function NewsLetter() {
+  const handlerSubscription = (e) => {
+    e.preventDefault();
+    console.log(`newsletter`);
+  };
   return (
     <div className={styles.container}>
       <div>
@@ -11,7 +15,11 @@ function NewsLetter() {
       <form>
         <input type="text" name="email" placeholder="Your Email Address" />
         <div className={styles.btn_container}>
-          <Button text="subscribe" myClassName={styles.btn} />
+          <Button
+            handler={handlerSubscription}
+            text="subscribe"
+            myClassName={styles.btn}
+          />
         </div>
       </form>
     </div>
