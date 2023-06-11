@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 
-import ShowProduct from "../../components/Show";
-import CardProduct from "../../components/Card";
+import ShowProduct from "../../../../modules/products/components/Show";
+import CardProduct from "../../../../modules/products/components/Card";
 import BannerFooter from "../../../../component/Banners/Footer";
 
 import mockData from "../../../../mock/data.json";
