@@ -31,8 +31,8 @@ function CardProduct({
           href={{
             pathname: "/products/[category]/[title]",
             query: {
-              category: formattedString(category, " ", "_"),
-              title: formattedString(title, " ", "_"),
+              category: formattedString(category, "_", " "),
+              title: formattedString(title, "_", " "),
             },
           }}
         >

@@ -15,7 +15,7 @@ function CategoriesList({ categories }) {
                 <Link
                   href={{
                     pathname: "/",
-                    query: { category: formattedString(name, " ", "_") },
+                    query: { category: formattedString(name, "_", " ") },
                   }}
                 >
                   <div>

@@ -6,6 +6,7 @@ import CardProduct from "../../components/Card";
 import BannerFooter from "../../../../component/Banners/Footer";
 
 import mockData from "../../../../mock/data.json";
+import { formattedString } from "../../../../utils/functions/orderArray";
 import styles from "./styles.module.scss";
 
 export default function ProductShow({ category, title }) {
@@ -14,14 +15,20 @@ export default function ProductShow({ category, title }) {
     imageShow: undefined,
     productsRelatives: [],
   });
+  const [productNotFound, setProductNotFound] = useState(undefined);
 
   const { productShow, imageShow, productsRelatives } = data;
 
   useEffect(() => {
-    let productCategory = mockData.filter((data) => data.category === category);
-    let productFilter = productCategory.filter(
-      (product) => product.title === title
+    let productCategory = mockData.filter(
+      (data) => data.category === formattedString(category, " ", "_")
     );
+    let productFilter = productCategory.filter(
+      (product) => product.title === formattedString(title, " ", "_")
+    );
+
+    if (productFilter.length === 0)
+      return setProductNotFound("Product not found");
 
     setData({
       productShow: productFilter[0],
@@ -35,21 +42,27 @@ export default function ProductShow({ category, title }) {
       <Head>
         <title>{`E-Commerce ${category}-${title}`}</title>
       </Head>
-      {productShow && (
-        <ShowProduct productShow={productShow} imageShow={imageShow} />
-      )}
-
-      {productsRelatives && (
-        <div className={styles.banner_footer}>
-          <BannerFooter
-            title="Relative Product"
-            myClassName={styles.relative__title}
-          >
-            {productsRelatives.map((product, index) => (
-              <CardProduct key={index} product={product} showRate={true} />
-            ))}
-          </BannerFooter>
+      {productNotFound ? (
+        <div className={styles.productNotFound}>
+          <h2>{productNotFound}</h2>
         </div>
+      ) : (
+        <>
+          <ShowProduct productShow={productShow} imageShow={imageShow} />
+
+          {productsRelatives && (
+            <div className={styles.banner_footer}>
+              <BannerFooter
+                title="Relative Product"
+                myClassName={styles.relative__title}
+              >
+                {productsRelatives.map((product, index) => (
+                  <CardProduct key={index} product={product} showRate={true} />
+                ))}
+              </BannerFooter>
+            </div>
+          )}
+        </>
       )}
     </>
   );
@@ -69,13 +82,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const category = context.params.category.replace("_", " ");
-  const title = context.params.title.replaceAll("_", " ");
+  const { params } = context;
+  const { category, title } = params;
 
   return {
     props: {
-      category,
-      title,
+      category: formattedString(category, "_", " "),
+      title: formattedString(title, "_", " "),
     },
   };
 }
