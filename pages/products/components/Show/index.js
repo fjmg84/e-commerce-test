@@ -23,9 +23,10 @@ function ShowProduct({ productShow, imageShow }) {
       tags: [],
     },
     image: null,
+    loading: false,
   });
 
-  const { product, image } = productSelected;
+  const { product, image, loading } = productSelected;
   const { sku, title, category, images, price, rate, description, tags } =
     product;
 
@@ -37,10 +38,15 @@ function ShowProduct({ productShow, imageShow }) {
     });
   }, [productShow, imageShow]);
 
+  useEffect(() => {
+    if (loading) setProductSelected({ ...productSelected, loading: false });
+  }, [loading]);
+
   const handleSelectImageProduct = (index) => {
     setProductSelected({
       ...productSelected,
       image: images[index],
+      loading: true,
     });
   };
 
@@ -68,32 +74,40 @@ function ShowProduct({ productShow, imageShow }) {
 
       <div className={styles.product__container}>
         <div className={styles.product__gallery}>
-          {image && (
-            <SideBySideMagnifier
-              imageSrc={image}
-              imageAlt="image effects"
-              fillAvailableSpace={false}
-            />
+          {loading && (
+            <div className={styles.loading}>
+              <p>
+                <i className="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                <span className="sr-only">Loading...</span>
+              </p>
+            </div>
           )}
-
-          {images &&
-            images.length > 1 &&
-            images.map((image, index) => {
-              return (
-                <div
-                  key={index}
-                  onClick={() => handleSelectImageProduct(index)}
-                >
-                  <Image
-                    src={image}
-                    alt={image}
-                    width={50}
-                    height={80}
-                    priority
-                  />
-                </div>
-              );
-            })}
+          {image && (
+            <>
+              <SideBySideMagnifier
+                imageSrc={image}
+                imageAlt="image effects"
+                fillAvailableSpace={false}
+              />
+              {images.length > 1 &&
+                images.map((image, index) => {
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => handleSelectImageProduct(index)}
+                    >
+                      <Image
+                        src={image}
+                        alt={image}
+                        width={50}
+                        height={80}
+                        priority
+                      />
+                    </div>
+                  );
+                })}
+            </>
+          )}
         </div>
 
         <div className={styles.product__data}>
