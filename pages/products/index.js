@@ -1,48 +1,48 @@
-import React, { useEffect, useState } from "react";
-import Head from "next/head";
-import { useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
+import { useSearchParams } from 'next/navigation'
 
-import CategoriesCircle from "../../component/Categories/Circle";
-import CategoriesList from "../../component/Categories/List";
-import Search from "../../component/Search";
-import NewsLetter from "../../component/NewsLetter";
-import BestProducts from "../../modules/products/components/Best";
-import CardProduct from "../../modules/products/components/Card";
-import BannerHead from "../../component/Banners/Head";
-import BannerFooter from "../../component/Banners/Footer";
-import ImageCard from "../../component/Common/Image";
+import CategoriesCircle from '../../component/Categories/Circle'
+import CategoriesList from '../../component/Categories/List'
+import Search from '../../component/Search'
+import NewsLetter from '../../component/NewsLetter'
+import BestProducts from '../../modules/products/components/Best'
+import CardProduct from '../../modules/products/components/Card'
+import BannerHead from '../../component/Banners/Head'
+import BannerFooter from '../../component/Banners/Footer'
+import ImageCard from '../../component/Common/Image'
 
-import { orderArray, unorderedArray } from "../../utils/functions/orderArray";
-import mockData from "../../mock/data.json";
-import styles from "./index.module.scss";
+import { orderArray, unorderedArray, formattedString } from '../../utils/functions/orderArray'
+import mockData from '../../mock/data.json'
+import styles from './index.module.scss'
 
 const IMAGES_ARRAY = [
-  "/recursos/main/87339849_530805007551424_292323017375800029_nlow.jpg",
-  "/recursos/main/87413583_2660130777540405_5722961474466513534_nlow.jpg",
-  "/recursos/main/85069033_185901059177965_6767010623440980864_nlow.jpg",
-  "/recursos/main/84981049_620107085435507_4260875787090681190_nlow.jpg",
-  "/recursos/main/85051426_2060664737412512_8458893884651247910_nlow.jpg",
-];
+  '/recursos/main/87339849_530805007551424_292323017375800029_nlow.jpg',
+  '/recursos/main/87413583_2660130777540405_5722961474466513534_nlow.jpg',
+  '/recursos/main/85069033_185901059177965_6767010623440980864_nlow.jpg',
+  '/recursos/main/84981049_620107085435507_4260875787090681190_nlow.jpg',
+  '/recursos/main/85051426_2060664737412512_8458893884651247910_nlow.jpg'
+]
 
-export default function ProductHome({ categories, products }) {
-  const [productsData, setProductsData] = useState([]);
-  const [imagesFooter] = useState(IMAGES_ARRAY);
-  const searchParams = useSearchParams();
+export default function ProductHome ({ categories, products }) {
+  const [productsData, setProductsData] = useState([])
+  const [imagesFooter] = useState(IMAGES_ARRAY)
+  const searchParams = useSearchParams()
 
-  let betsSellers = Object.values(products);
+  const betsSellers = Object.values(products)
 
   useEffect(() => {
-    let categoryFilter = searchParams.get("category");
-    let productsFilter = [];
+    const categoryFilter = searchParams.get('category')
+    let productsFilter = []
 
-    if (categoryFilter)
+    if (categoryFilter) {
       productsFilter = products.filter(
-        (product) => product.category === categoryFilter.replaceAll("_", " ")
-      );
-    else productsFilter = products.filter((product) => product);
+        (product) => product.category === formattedString(categoryFilter, '_', ' ')
+      )
+    } else productsFilter = products.filter((product) => product)
 
-    setProductsData(productsFilter);
-  }, [searchParams]);
+    setProductsData(productsFilter)
+  }, [searchParams])
 
   return (
     <>
@@ -75,7 +75,7 @@ export default function ProductHome({ categories, products }) {
                   <div key={product.sku} className={styles.product}>
                     <CardProduct product={product} />
                   </div>
-                );
+                )
               })}
           </main>
         </div>
@@ -96,34 +96,34 @@ export default function ProductHome({ categories, products }) {
                 width={230}
                 height={230}
               />
-            );
+            )
           })}
         </BannerFooter>
       </div>
     </>
-  );
+  )
 }
 
-export async function getStaticProps() {
-  let categories = [],
-    temp = [];
+export async function getStaticProps () {
+  let categories = []
+  let temp = []
   mockData.forEach((arr) => {
-    let nameCategory = arr.category;
+    const nameCategory = arr.category
     if (temp.includes(nameCategory) === false) {
-      let countCategory = mockData.filter(
+      const countCategory = mockData.filter(
         (arr) => arr.category === nameCategory
-      ).length;
-      temp = [...temp, nameCategory];
+      ).length
+      temp = [...temp, nameCategory]
       categories = [
         ...categories,
-        { name: nameCategory, count: countCategory },
-      ];
+        { name: nameCategory, count: countCategory }
+      ]
     }
-  });
+  })
   return {
     props: {
-      categories: orderArray(categories, "name"),
-      products: unorderedArray(mockData),
-    },
-  };
+      categories: orderArray(categories, 'name'),
+      products: unorderedArray(mockData)
+    }
+  }
 }
