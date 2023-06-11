@@ -1,88 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.scss";
+
+const DATA_LIST = [
+  {
+    category: "For_Babies",
+    image: "/recursos/main/baby.png",
+    title: "Baby & Toddler",
+  },
+  {
+    category: "For_Girls",
+    image: "/recursos/main/girl.png",
+    title: "For Girls",
+  },
+  {
+    category: "For_Boys",
+    image: "/recursos/main/boy.png",
+    title: "For Boys",
+  },
+  {
+    category: "For_Home",
+    image: "/recursos/main/toys.png",
+    title: "Home & Toys",
+  },
+];
 
 function CategoriesCircle() {
   return (
     <>
       <div className={styles.categories}>
-        <div>
-          <Image
-            src="/recursos/main/baby.png"
-            width={150}
-            height={180}
-            alt="Baby & Toddler"
-            className={styles.slider}
-          />
-          <h5>
-            <Link
-              href={{
-                pathname: "/",
-                query: { category: "For Babies" },
-              }}
-            >
-              Baby & Toddler
-            </Link>
-          </h5>
-        </div>
-        <div>
-          <Image
-            src="/recursos/main/girl.png"
-            width={150}
-            height={180}
-            alt="For Girls"
-            className={styles.slider}
-          />
-          <h5>
-            <Link
-              href={{
-                pathname: "/",
-                query: { category: "For Girls" },
-              }}
-            >
-              For Girls
-            </Link>
-          </h5>
-        </div>
-        <div>
-          <Image
-            src="/recursos/main/boy.png"
-            width={150}
-            height={180}
-            alt="For Boys"
-            className={styles.slider}
-          />
-          <h5>
-            <Link
-              href={{
-                pathname: "/",
-                query: { category: "For Boys" },
-              }}
-            >
-              For Boys
-            </Link>
-          </h5>
-        </div>
-        <div>
-          <Image
-            src="/recursos/main/toys.png"
-            width={150}
-            height={180}
-            alt="Home & Toys"
-            className={styles.slider}
-          />
-          <h5>
-            <Link
-              href={{
-                pathname: "/",
-                query: { category: "For Home" },
-              }}
-            >
-              Home & Toys
-            </Link>
-          </h5>
-        </div>
+        {DATA_LIST.map((data, index) => {
+          const { category, image, title } = data;
+          return (
+            <div key={index}>
+              <Link
+                href={{
+                  pathname: "/",
+                  query: { category },
+                }}
+              >
+                <Image
+                  src={image}
+                  width={150}
+                  height={180}
+                  alt={image}
+                  className={styles.slider}
+                />
+              </Link>
+              <h5>
+                <Link
+                  href={{
+                    pathname: "/",
+                    query: { category },
+                  }}
+                >
+                  {title}
+                </Link>
+              </h5>
+            </div>
+          );
+        })}
       </div>
     </>
   );

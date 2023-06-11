@@ -15,6 +15,12 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    img {
+      transition: all 0.5s;
+      &:hover {
+        filter: drop-shadow(2px 4px 6px rgb(126, 125, 125));
+      }
+    }
     h5 {
       a {
         color: $blue;

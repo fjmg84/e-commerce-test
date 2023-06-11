@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import Button from "../../../../component/Common/Button";
 import Rate from "../Common/Rate";
@@ -8,6 +9,7 @@ import Title from "../Common/Title";
 import Price from "../Common/Price";
 
 import styles from "./styles.module.scss";
+import { formattedString } from "../../../../utils/functions/orderArray";
 
 function CardProduct({
   product = {
@@ -25,8 +27,33 @@ function CardProduct({
   return (
     <div className={styles.container}>
       <div className={styles.boxCard}>
-        {images.length >= 2 ? (
-          <div className={styles.boxCardImages}>
+        <Link
+          href={{
+            pathname: "/products/[category]/[title]",
+            query: {
+              category: formattedString(category, " ", "_"),
+              title: formattedString(title, " ", "_"),
+            },
+          }}
+        >
+          {images.length >= 2 ? (
+            <div className={styles.boxCardImages}>
+              <Image
+                src={images[0]}
+                width={210}
+                height={300}
+                alt={images[0]}
+                priority
+              />
+              <Image
+                src={images[1]}
+                width={210}
+                height={300}
+                alt={images[1]}
+                priority
+              />
+            </div>
+          ) : (
             <Image
               src={images[0]}
               width={210}
@@ -34,23 +61,8 @@ function CardProduct({
               alt={images[0]}
               priority
             />
-            <Image
-              src={images[1]}
-              width={210}
-              height={300}
-              alt={images[1]}
-              priority
-            />
-          </div>
-        ) : (
-          <Image
-            src={images[0]}
-            width={210}
-            height={300}
-            alt={images[0]}
-            priority
-          />
-        )}
+          )}
+        </Link>
 
         <div className={styles.boxCardActions}>
           <span>

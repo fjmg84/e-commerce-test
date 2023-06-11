@@ -19,3 +19,6 @@ export const unorderedArray = (arr) => {
   }
   return arr;
 };
+
+export const formattedString = (str, newChar, oldChar) =>
+  str?.replaceAll(oldChar, newChar);
