@@ -1,53 +1,57 @@
-import React, { useEffect, useState } from 'react'
-import Head from 'next/head'
+import React, { useEffect, useState } from "react";
+import Head from "next/head";
 
-import ShowProduct from '../../../../modules/products/components/Show'
-import CardProduct from '../../../../modules/products/components/Card'
-import BannerFooter from '../../../../component/Banners/Footer'
+import PageLayout from "../../../../component/PageLayout";
+import ShowProduct from "../../../../modules/products/components/Show";
+import CardProduct from "../../../../modules/products/components/Card";
+import BannerFooter from "../../../../component/Banners/Footer";
 
-import mockData from '../../../../mock/data.json'
-import { formattedString } from '../../../../utils/functions/orderArray'
-import styles from './styles.module.scss'
+import mockData from "../../../../mock/data.json";
+import { filterProducts, findProducts, formattedString } from "../../../../utils/functions/orderArray";
+import styles from "./styles.module.scss";
 
-export default function ProductShow ({ category, title }) {
+export default function ProductShow({ category, title }) {
   const [data, setData] = useState({
     productShow: {},
     imageShow: undefined,
-    productsRelatives: []
-  })
-  const [productNotFound, setProductNotFound] = useState(undefined)
+    productsRelatives: [],
+  });
+  const [productNotFound, setProductNotFound] = useState(undefined);
 
-  const { productShow, imageShow, productsRelatives } = data
+  const { productShow, imageShow, productsRelatives } = data;
 
   useEffect(() => {
-    const productCategory = mockData.filter(
-      (data) => data.category === formattedString(category, ' ', '_')
-    )
-    const productFilter = productCategory.filter(
-      (product) => product.title === formattedString(title, ' ', '_')
-    )
+    const productXCategory = filterProducts({
+      listProducts: mockData,
+      filter: formattedString(category, " ", "_")
+    })
+    const productXTitle = findProducts({
+      listProducts: productXCategory,
+      filter: formattedString(title, " ", "_"),
+      key: 'title'
+    })
 
-    if (productFilter.length === 0) { return setProductNotFound('Product not found') }
+    if (productXTitle.length === 0) {
+      return setProductNotFound("Product not found");
+    }
 
     setData({
-      productShow: productFilter[0],
-      imageShow: productFilter[0].images[0],
-      productsRelatives: productCategory.slice(1, 4)
-    })
-  }, [category, title])
+      productShow: productXTitle,
+      imageShow: productXTitle.images[0],
+      productsRelatives: productXCategory.slice(1, 4),
+    });
+  }, [category, title]);
 
   return (
-    <>
+    <PageLayout>
       <Head>
         <title>{`E-Commerce ${category}-${title}`}</title>
       </Head>
-      {productNotFound
-        ? (
+      {productNotFound ? (
         <div className={styles.productNotFound}>
           <h2>{productNotFound}</h2>
         </div>
-          )
-        : (
+      ) : (
         <>
           <ShowProduct productShow={productShow} imageShow={imageShow} />
 
@@ -64,32 +68,32 @@ export default function ProductShow ({ category, title }) {
             </div>
           )}
         </>
-          )}
-    </>
-  )
+      )}
+    </PageLayout>
+  );
 }
 
-export async function getStaticPaths () {
+export async function getStaticPaths() {
   const productsPath = mockData.slice(0, 5).map((arr) => {
     return {
-      params: { category: arr.category, title: arr.title }
-    }
-  })
+      params: { category: arr.category, title: arr.title },
+    };
+  });
 
   return {
     paths: productsPath,
-    fallback: 'blocking'
-  }
+    fallback: "blocking",
+  };
 }
 
-export async function getStaticProps (context) {
-  const { params } = context
-  const { category, title } = params
+export async function getStaticProps(context) {
+  const { params } = context;
+  const { category, title } = params;
 
   return {
     props: {
-      category: formattedString(category, '_', ' '),
-      title: formattedString(title, '_', ' ')
-    }
-  }
+      category,
+      title
+    },
+  };
 }

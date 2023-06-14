@@ -29,7 +29,6 @@ function Navbar() {
           <ul className={styles.links}>
             <li className={pathname === "/products" ? styles.active : ""}>
               <Link href={"/products"}>home</Link>
-
               <span />
             </li>
             <li className={pathname === "/shop_features" ? styles.active : ""}>

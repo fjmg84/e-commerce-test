@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "next/router";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 
