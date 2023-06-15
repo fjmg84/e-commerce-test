@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React from "react";
 import Head from "next/head";
 import { useSearchParams } from "next/navigation";
 
@@ -16,12 +16,11 @@ import ImageCard from "../../component/Common/Image";
 import {
   orderArray,
   unorderedArray,
-  formattedString,
   createListCategories,
-  filterProducts,
 } from "../../utils/functions/orderArray";
 import mockData from "../../mock/data.json";
 import styles from "./index.module.scss";
+import useFilteredProducts from "../../hook/useFilteredProducts";
 
 const IMAGES_ARRAY = [
   "/recursos/main/87339849_530805007551424_292323017375800029_nlow.jpg",
@@ -32,18 +31,10 @@ const IMAGES_ARRAY = [
 ];
 
 export default function ProductHome({ categories = [], products = [] }) {
-  const [productsData, setProductsData] = useState([]);
-  const imagesFooter = useMemo(() => IMAGES_ARRAY, []);
   const searchParams = useSearchParams();
+  const productsData = useFilteredProducts({ categories, products, searchParams });
 
-  useEffect(() => {
-    let productsFilter = [];
 
-    let categorySelected = categories.find(category => category.slug === searchParams.get("category"))
-    productsFilter = filterProducts({ listProducts: products, filter: categorySelected?.name })
-
-    setProductsData(productsFilter);
-  }, [searchParams]);
 
   return (
     <PageLayout>
@@ -51,7 +42,7 @@ export default function ProductHome({ categories = [], products = [] }) {
         <title>E-Commerce Baby</title>
       </Head>
 
-      <div className={styles.container}>
+      <section className={styles.container}>
         <BannerHead />
         <CategoriesCircle />
 
@@ -78,14 +69,14 @@ export default function ProductHome({ categories = [], products = [] }) {
               })}
           </main>
         </div>
-      </div>
+      </section>
 
       <div className={styles.banner__footer}>
         <BannerFooter
           title="instagram @kidsrus"
           myClassName={styles.kidsrus_title}
         >
-          {imagesFooter.map((image, index) => {
+          {IMAGES_ARRAY.map((image, index) => {
             return (
               <ImageCard
                 key={index}

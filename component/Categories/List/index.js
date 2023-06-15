@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
-import { formattedString } from "../../../utils/functions/orderArray";
 
 function CategoriesList({ categories }) {
   return (
@@ -9,13 +8,13 @@ function CategoriesList({ categories }) {
       <div className={styles.container_list}>
         <ul>
           {categories.map((category, index) => {
-            const { name, count } = category;
+            const { name, count, slug } = category;
             return (
               <li key={index}>
                 <Link
                   href={{
                     pathname: "/",
-                    query: { category: formattedString(name, "_", " ") },
+                    query: { category: slug },
                   }}
                 >
                   <div>

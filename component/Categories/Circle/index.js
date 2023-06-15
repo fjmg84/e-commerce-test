@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 
-const DATA_LIST = [
+export const DATA_LIST = [
   {
     category: "For_Babies",
     image: "/recursos/main/baby.png",
