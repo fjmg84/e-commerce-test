@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Head from "next/head";
 import { useSearchParams } from "next/navigation";
 
@@ -20,7 +20,8 @@ import {
 } from "../../utils/functions/orderArray";
 import mockData from "../../mock/data.json";
 import styles from "./index.module.scss";
-import useFilteredProducts from "../../hook/useFilteredProducts";
+import useFilteredProducts from "../../modules/products/hook/useFilteredProducts";
+import { ProductContext } from "../../modules/products/context";
 
 const IMAGES_ARRAY = [
   "/recursos/main/87339849_530805007551424_292323017375800029_nlow.jpg",
@@ -30,11 +31,19 @@ const IMAGES_ARRAY = [
   "/recursos/main/85051426_2060664737412512_8458893884651247910_nlow.jpg",
 ];
 
-export default function ProductHome({ categories = [], products = [] }) {
+export default function ProductHome(props) {
+  const { products, setProducts } = useContext(ProductContext)
+  const { listCategories, listProducts } = products
   const searchParams = useSearchParams();
-  const productsData = useFilteredProducts({ categories, products, searchParams });
+  const { productsFilter } = useFilteredProducts({ categories: listCategories, products: listProducts, searchParams });
 
 
+  useEffect(() => {
+    setProducts({
+      listCategories: props.categories,
+      listProducts: props.products
+    })
+  }, [props])
 
   return (
     <PageLayout>
@@ -54,13 +63,13 @@ export default function ProductHome({ categories = [], products = [] }) {
 
           <aside>
             <Search />
-            <CategoriesList categories={categories} />
-            <BestProducts products={products.slice(0, 4)} />
+            <CategoriesList />
+            <BestProducts />
             <NewsLetter />
           </aside>
           <main>
             {
-              productsData.map((product) => {
+              productsFilter?.map((product) => {
                 return (
                   <div key={product.sku} className={styles.product}>
                     <CardProduct product={product} />
@@ -96,7 +105,6 @@ export default function ProductHome({ categories = [], products = [] }) {
 
 export async function getStaticProps() {
   const { categories } = createListCategories(mockData);
-
 
   return {
     props: {

@@ -51,7 +51,7 @@ export const formattedString = (str, newChar, oldChar) =>
   str?.replaceAll(oldChar, newChar)
 
 
-export const filterProducts = ({ listProducts, filter = undefined, key = 'category' }) => listProducts.filter(
+export const filterProducts = ({ listProducts = [], filter = undefined, key = 'category' }) => listProducts.filter(
   (product) => !filter ? product : product[key] === filter
 );
 

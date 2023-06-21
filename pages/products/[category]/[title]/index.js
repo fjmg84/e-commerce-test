@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 
 import PageLayout from "../../../../component/PageLayout";
@@ -7,38 +7,55 @@ import CardProduct from "../../../../modules/products/components/Card";
 import BannerFooter from "../../../../component/Banners/Footer";
 
 import mockData from "../../../../mock/data.json";
-import { filterProducts, findProducts, formattedString } from "../../../../utils/functions/orderArray";
+import { ProductContext } from "../../../../modules/products/context";
+import { formattedString } from "../../../../utils/functions/orderArray";
 import styles from "./styles.module.scss";
 
 export default function ProductShow({ category, title }) {
+  const { products } = useContext(ProductContext)
+  const { listProducts } = products;
+
   const [data, setData] = useState({
     productShow: {},
     imageShow: undefined,
     productsRelatives: [],
   });
+  const { productShow, imageShow, productsRelatives } = data;
   const [productNotFound, setProductNotFound] = useState(undefined);
 
-  const { productShow, imageShow, productsRelatives } = data;
+  const findProducts = ({ array }) => {
+    const categoryFormatted = formattedString(category, " ", "_")
+    const titleFormatted = formattedString(title, " ", "_")
+
+    const product = array.find(product => product.category === categoryFormatted && product.title === titleFormatted)
+    const relatives = array.filter(product => product.category === categoryFormatted).slice(0, 3)
+
+    return {
+      product,
+      relatives
+    }
+  }
 
   useEffect(() => {
-    const productXCategory = filterProducts({
-      listProducts: mockData,
-      filter: formattedString(category, " ", "_")
-    })
-    const productXTitle = findProducts({
-      listProducts: productXCategory,
-      filter: formattedString(title, " ", "_"),
-      key: 'title'
-    })
+    let productFilter = { product: {}, relatives: [] }
 
-    if (productXTitle.length === 0) {
-      return setProductNotFound("Product not found");
+    if (listProducts.length > 0)
+      productFilter = findProducts({ array: listProducts })
+    else
+      productFilter = findProducts({ array: mockData })
+
+
+    const { product, relatives } = productFilter
+
+    if (product === undefined) {
+      setProductNotFound('Product not found')
+      return
     }
 
     setData({
-      productShow: productXTitle,
-      imageShow: productXTitle.images[0],
-      productsRelatives: productXCategory.slice(1, 4),
+      productShow: product,
+      imageShow: product?.images[0],
+      productsRelatives: relatives,
     });
   }, [category, title]);
 

@@ -97,7 +97,7 @@ exports[`ProductHome should return snapshot 1`] = `
       <div
         class="container"
       >
-        <div
+        <section
           class="container"
         >
           <div
@@ -3224,7 +3224,7 @@ exports[`ProductHome should return snapshot 1`] = `
               </div>
             </main>
           </div>
-        </div>
+        </section>
         <div
           class="banner__footer"
         >
@@ -3464,7 +3464,7 @@ exports[`ProductHome should return snapshot 1`] = `
     <div
       class="container"
     >
-      <div
+      <section
         class="container"
       >
         <div
@@ -6591,7 +6591,7 @@ exports[`ProductHome should return snapshot 1`] = `
             </div>
           </main>
         </div>
-      </div>
+      </section>
       <div
         class="banner__footer"
       >
