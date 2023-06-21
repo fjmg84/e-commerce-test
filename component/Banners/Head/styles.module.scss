@@ -76,3 +76,12 @@
     font-family: "Quicksand", sans-serif;
   }
 }
+
+@media (max-width: 767px) {
+  .slider {
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+  }
+}
