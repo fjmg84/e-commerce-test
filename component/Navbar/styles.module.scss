@@ -24,6 +24,23 @@
   background-color: $orange;
 }
 
+.btn__menu {
+  width: 100%;
+  position: absolute;
+  top: 35px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+  position: relative;
+  button {
+    z-index: 101;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
@@ -55,12 +72,72 @@
   }
 }
 
+.navbar__mobile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7098039216);
+  color: white;
+  top: 0;
+  left: -100%;
+  transition: all 0.5s ease-in-out;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+
+    li {
+      text-align: center;
+      transition: all 0.2s;
+      height: 45px;
+
+      a {
+        color: white;
+      }
+    }
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 5px;
+  }
+
+  .links {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
+}
+
 .active {
   color: $orange;
   span {
-    background: url("/recursos/main/home-8.png") no-repeat;
+    background: url("/recursos/main/home-8.png") no-repeat center center;
     display: flex;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
+    width: auto;
     height: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    display: none;
+  }
+}
+
+@media (min-width: 767px) {
+  .btn__menu {
+    display: none;
   }
 }
