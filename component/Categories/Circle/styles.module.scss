@@ -31,3 +31,10 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .categories {
+    width: auto;
+    flex-direction: column;
+  }
+}
